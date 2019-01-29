@@ -182,6 +182,12 @@ public class DisposizioneDAO {
 		return ok;	
 	}
 	
+	
+	/**
+	 * crea una lista con tutte le aule presenti nel DB
+	 * @return lista <Aula> oppure null se il DB è vuoto 
+	 */
+	
 	public static ArrayList<Aula> aule(){
 		ArrayList<Aula> lista = new ArrayList<>();
 		try {
@@ -205,10 +211,20 @@ public class DisposizioneDAO {
 		return lista;
 	}
 	
-	
+	/**
+	 * aggiunge un'aula al DB
+	 * @param id identificativo della classe
+	 * @param classe classe che va da 1 a 3
+	 * @param sezione carattere che va da A a Z
+	 * @return
+	 */
 
 	public static boolean addAula(int id, int classe, String sezione) {
 		boolean ok=false;
+		
+		if (!(classe>=1) || !(classe<=3)) {
+			return ok;
+		}
 		
 		ArrayList<Aula> aule = DisposizioneDAO.aule();
 		for (Aula aula : aule) {

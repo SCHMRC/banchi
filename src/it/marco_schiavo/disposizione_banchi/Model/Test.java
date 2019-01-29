@@ -18,7 +18,9 @@ public class Test {
 //			System.out.println("*****");
 //		}
 		
-		System.out.println(model.aule());
+		
+		
+		System.out.println(model.creaAula(6, 3, "B"));
 		
 	
 

@@ -9,7 +9,7 @@ public class Aula {
 	
 	public Aula (int aulaId,int classe,String sezione) {
 		this.aulaId = aulaId;
-		this.classe=classe;
+		this.setClasse(classe);
 		this.sezione=sezione;
 		this.alunni=new ArrayList<>();
 	}
@@ -27,7 +27,8 @@ public class Aula {
 	}
 
 	public void setClasse(int classe) {
-		this.classe = classe;
+		if (classe>=1||classe<=3)
+			this.classe = classe;
 	}
 
 	public String getSezione() {
