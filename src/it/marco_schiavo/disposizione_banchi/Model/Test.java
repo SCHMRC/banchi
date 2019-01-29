@@ -17,10 +17,13 @@ public class Test {
 //			System.out.println(p.toString());
 //			System.out.println("*****");
 //		}
+//		System.out.println(model.creaAula(7, 3, "B"));
+//		System.out.println(model.removeAula(7));
 		
+//		System.out.println(model.updateAula(6, 3, "B"));
 		
-		
-		System.out.println(model.creaAula(6, 3, "B"));
+
+
 		
 	
 

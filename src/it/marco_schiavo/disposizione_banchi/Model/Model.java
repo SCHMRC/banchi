@@ -38,6 +38,14 @@ public class Model {
 	public List<Aula> aule(){
 		return DisposizioneDAO.aule();
 	}
+	
+	public boolean removeAula(int id) {
+		return DisposizioneDAO.deleteAula(id);
+	}
+	
+	public boolean updateAula(int id,int classe,String sezione) {
+		return DisposizioneDAO.updateAula(id, classe, sezione);
+	}
 
 	
 	

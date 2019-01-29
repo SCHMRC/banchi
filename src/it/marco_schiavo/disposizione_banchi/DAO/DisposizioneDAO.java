@@ -21,6 +21,9 @@ public class DisposizioneDAO {
 	private static ArrayList<Alunno> lista;
 	private static final String createAula = "INSERT INTO Alunno.aula (id,classe,sezione) VALUE (?,?,?)";
 	private static final String listaAula="SELECT * FROM Alunno.aula";
+	private static final String deleteAula = "DELETE FROM Alunno.aula WHERE (id = ?)";
+	private static final String updateAula="UPDATE Alunno.aula set classe=? ,sezione=? WHERE id=?";
+	
 	public DisposizioneDAO() {
 		
 	}
@@ -222,7 +225,7 @@ public class DisposizioneDAO {
 	public static boolean addAula(int id, int classe, String sezione) {
 		boolean ok=false;
 		
-		if (!(classe>=1) || !(classe<=3)) {
+		if (!(classe>=1 && classe<=3)) {
 			return ok;
 		}
 		
@@ -247,6 +250,96 @@ public class DisposizioneDAO {
 		}
 		
 		
+		return ok;
+	}
+	
+	/**
+	 * cancella un'aula
+	 * @param id identificatore aula
+	 * @return true ->se l'operazione è riuscita
+	 */
+	
+	public static boolean deleteAula(int id) {
+		boolean ok=false;
+		int flag=0;
+		
+		
+		ArrayList<Aula> aule = DisposizioneDAO.aule();
+		for (Aula aula:aule) {
+			if(aula.getAulaId()==id) {
+				flag++;
+			}
+		}
+		
+		//TODO: gestire l'errore dell'ID non trovato
+		if (flag==0)
+			ok=false;
+		
+		if (flag!=0) {
+			try {
+				Connection conn = DriverManager.getConnection(jdbcURL);
+				PreparedStatement std = conn.prepareStatement(deleteAula);
+				std.setInt(1, id);
+				std.execute();
+				conn.close();
+				ok=true;
+				
+			}catch (SQLException e) {
+				e.printStackTrace();
+				ok=false;
+			}
+			
+		}
+		
+		return ok;
+	}
+	
+	/**
+	 * aggiorna aula
+	 * @param id -> aula da aggiornare
+	 * @param classe -> aggiorna classe compresa tra 1 e 3
+	 * @param sezione -> aggiorna sezione
+	 * @return true settutto è andato a buon fine
+	 */
+	
+	public static boolean updateAula(int id,int classe,String sezione) {
+		boolean ok=false;
+		int flag=0;
+		
+		if (!(classe>=1 && classe<=3)) {
+			return ok;
+		}
+		
+		
+		ArrayList<Aula> lista = DisposizioneDAO.aule();
+		for (Aula aula : lista) {
+			if (aula.getAulaId()==id)
+				flag++;
+		}
+		
+		//TODO: gestire l'errore dell'ID non trovato
+		if (flag==0)
+			ok=false;
+		
+		
+				
+		
+		if (flag!=0) {
+			try {
+				Connection conn = DriverManager.getConnection(jdbcURL);
+				PreparedStatement std = conn.prepareStatement(updateAula);
+				std.setInt(1, classe);
+				std.setString(2, sezione);
+				std.setInt(3, id);
+				std.execute();
+				conn.close();
+				ok=true;
+			}catch (SQLException e) {
+				e.printStackTrace();
+				ok=false;
+			}	
+		}
+
 		return ok;
 	}
 
