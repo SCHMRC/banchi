@@ -2,7 +2,6 @@ package it.marco_schiavo.disposizione_banchi.DAO;
 
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,8 +11,7 @@ import it.marco_schiavo.disposizione_banchi.Model.Alunno;
 import it.marco_schiavo.disposizione_banchi.Model.Aula;
 
 public class DisposizioneDAO {
-	//TODO:modificare i nomi delle relazioni da alunno in ?
-	private static final String jdbcURL = "jdbc:mysql://localhost:3306/Alunno?user=root&password=LeonardoViola201";
+	
 	private static final String sqlQuery = "SELECT * FROM Alunno.alunno";
 	private static final String update = "UPDATE Alunno.alunno set nome=?, cognome=? , sesso=? , comportamento=?,id_aula_FK=? where id=?";
 	private static final String delete = "delete from Alunno.alunno where id=?";
@@ -23,6 +21,10 @@ public class DisposizioneDAO {
 	private static final String listaAula="SELECT * FROM Alunno.aula";
 	private static final String deleteAula = "DELETE FROM Alunno.aula WHERE (id = ?)";
 	private static final String updateAula="UPDATE Alunno.aula set classe=? ,sezione=? WHERE id=?";
+	private static final String alunniClasse = "SELECT * " + 
+			"FROM Alunno.alunno, Alunno.aula " + 
+			"WHERE  alunno.id_aula_FK=aula.id " + 
+			"AND aula.id = ?";
 	
 	public DisposizioneDAO() {
 		
@@ -38,7 +40,7 @@ public class DisposizioneDAO {
 		
 		
 		try {
-			Connection conn = DriverManager.getConnection(jdbcURL);
+			Connection conn = ConnectDB.getConnection();
 			PreparedStatement std = conn.prepareStatement(sqlQuery);
 			ResultSet result = std.executeQuery();
 			while (result.next()) {
@@ -71,7 +73,7 @@ public class DisposizioneDAO {
 		
 		
 			try {
-				Connection conn = DriverManager.getConnection(jdbcURL);
+				Connection conn = ConnectDB.getConnection();
 				PreparedStatement std = conn.prepareStatement(insert);
 				std.setString(1, p.getNome());
 				std.setString(2, p.getCognome());
@@ -105,7 +107,7 @@ public class DisposizioneDAO {
 		for (Alunno temp : lista) {
 			if (temp.getId()==k) {
 				try {
-					Connection conn = DriverManager.getConnection(jdbcURL);
+					Connection conn = ConnectDB.getConnection();
 					PreparedStatement std = conn.prepareStatement(update);
 					std.setString(1, j.getNome());
 					std.setString(2, j.getCognome());
@@ -140,7 +142,7 @@ public class DisposizioneDAO {
 		for (Alunno j : lista) {
 			if (k==j.getId()) {
 				try {
-					Connection conn = DriverManager.getConnection(jdbcURL);
+					Connection conn = ConnectDB.getConnection();
 					PreparedStatement std = conn.prepareStatement(delete);
 					std.setInt(1, k);
 					std.execute();
@@ -169,7 +171,7 @@ public class DisposizioneDAO {
 		String ricrea = " ALTER TABLE Alunno.alunno ADD id INT NOT NULL AUTO_INCREMENT FIRST ,ADD PRIMARY KEY (id)";
 		
 		try {
-			Connection conn = DriverManager.getConnection(jdbcURL);
+			Connection conn = ConnectDB.getConnection();
 			Statement std = conn.createStatement();
 			std.execute(cancella);
 			std.execute(ricrea);
@@ -194,7 +196,7 @@ public class DisposizioneDAO {
 	public static ArrayList<Aula> aule(){
 		ArrayList<Aula> lista = new ArrayList<>();
 		try {
-			Connection conn = DriverManager.getConnection(jdbcURL);
+			Connection conn = ConnectDB.getConnection();
 			PreparedStatement std = conn.prepareStatement(listaAula);
 			ResultSet result = std.executeQuery();
 			while (result.next()) {
@@ -236,7 +238,7 @@ public class DisposizioneDAO {
 		}
 
 		try {
-		Connection conn = DriverManager.getConnection(jdbcURL);
+		Connection conn = ConnectDB.getConnection();
 		PreparedStatement std = conn.prepareStatement(createAula);
 		std.setInt(1, id);
 		std.setInt(2, classe);
@@ -277,7 +279,7 @@ public class DisposizioneDAO {
 		
 		if (flag!=0) {
 			try {
-				Connection conn = DriverManager.getConnection(jdbcURL);
+				Connection conn = ConnectDB.getConnection();
 				PreparedStatement std = conn.prepareStatement(deleteAula);
 				std.setInt(1, id);
 				std.execute();
@@ -326,7 +328,7 @@ public class DisposizioneDAO {
 		
 		if (flag!=0) {
 			try {
-				Connection conn = DriverManager.getConnection(jdbcURL);
+				Connection conn = ConnectDB.getConnection();
 				PreparedStatement std = conn.prepareStatement(updateAula);
 				std.setInt(1, classe);
 				std.setString(2, sezione);
@@ -341,6 +343,34 @@ public class DisposizioneDAO {
 		}
 
 		return ok;
+	}
+	
+	
+	public static ArrayList<Alunno> alunniClasse(int id){
+		lista = new ArrayList<>();
+	
+
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement std = conn.prepareStatement(alunniClasse);
+			std.setInt(1, id);
+			ResultSet result = std.executeQuery();
+			while (result.next()) {
+				Alunno alunno = new Alunno(result.getInt("id"),result.getString("nome"),
+						result.getString("cognome"),result.getString("sesso"),result.getString("comportamento")
+						,result.getInt("id_aula_FK"));
+				lista.add(alunno);
+			}
+			conn.close();
+			return lista;
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return lista;
+		
 	}
 
 
