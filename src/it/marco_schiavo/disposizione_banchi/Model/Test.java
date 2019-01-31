@@ -8,7 +8,7 @@ public class Test {
 	
 	public static void main(String[] args) {
 		
-//		Model model = new Model();
+		Model model = new Model();
 //		Alunno j = new Alunno("Cocco","Pero","M","vivace",2);
 //		System.out.println(model.aggiornaAlunno(5, j));
 //		System.out.println(model.inserisciAlunno(j));
@@ -28,53 +28,11 @@ public class Test {
 //		System.out.println(p.toString());
 //		System.out.println("*****");
 //	}
-		
-		
-		int[] x= new int[20];
-		Random random = new Random();
-		boolean flag = false;
-		
-		int t = random.nextInt(10);
-		
-		for (int j=0;j<10;j++) {
-			t=random.nextInt(10);
-			do {
-			for (int i=0;i<10;i++) {
-				if(x[i]==t) {
-					flag = true;
-					break;
-				}else flag=false;
-			}}while (flag);
-			if (!flag)
-				x[j]=t;
-			System.out.println(x[j]);
-			
-		}
-
-		
-	
-		
-		
-		
-		
-		
+		model.random(2);
 		
 		
 
 
-		
-	
-
-	
-
-			
-
-		
-
-		
-		
-		
-		
 	}
 
 }

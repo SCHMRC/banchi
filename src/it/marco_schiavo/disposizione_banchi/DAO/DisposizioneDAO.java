@@ -345,6 +345,11 @@ public class DisposizioneDAO {
 		return ok;
 	}
 	
+	/**
+	 * mi restituisce una lista di alunni di una determinata classe
+	 * @param id <- id dell'aula
+	 * @return lista di alunni
+	 */
 	
 	public static ArrayList<Alunno> alunniClasse(int id){
 		lista = new ArrayList<>();
