@@ -1,5 +1,4 @@
 package it.marco_schiavo.disposizione_banchi.Model;
-import java.util.Random;
 
 import it.marco_schiavo.disposizione_banchi.Model.Alunno;
 
@@ -24,11 +23,16 @@ public class Test {
 		
 //		System.out.println(model.updateAula(6, 3, "B"));
 		
-//		for (Alunno p : model.getAlunniClasse(2)) {
-//		System.out.println(p.toString());
-//		System.out.println("*****");
-//	}
-		model.random(2);
+		for (Alunno p : model.getAlunniClasse(2)) {
+		System.out.println(p.toString());
+		System.out.println("*****");
+	}
+		System.out.println("--------");
+		for (Alunno p : model.random(2)) {
+		System.out.println(p.toString());
+		System.out.println("*****");
+	}
+
 		
 		
 

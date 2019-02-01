@@ -1,7 +1,6 @@
 package it.marco_schiavo.disposizione_banchi.Model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -57,53 +56,54 @@ public class Model {
 	
 	/**
 	 * 
-	 * @param id <- id della classe
+	 * @param id <- id della classe da riordinare
 	 * @return
 	 */
 	public List<Alunno> random(int id){
 
-		ArrayList<Alunno> lista = new ArrayList<>();
-		HashMap<Integer,Integer> random = new HashMap<>();
+		ArrayList<Alunno> listaOrdinata = new ArrayList<>();
 		
-		int i = 1;
-		for (Alunno alunno : DisposizioneDAO.alunniClasse(id)) {
-			random.put(alunno.getId(),i++);
-		}
+		listaOrdinata = DisposizioneDAO.alunniClasse(id);
+		
 
 		//implementato l'algoritmo del casuale
 		boolean flag = false;
-		int[] k = new int[random.size()];
+		int[] k = new int[listaOrdinata.size()];	
 		Random casual = new Random();
-		int r = random.size();
+		int r = listaOrdinata.size();
 		int t = casual.nextInt(r);
-		for (int j=0;j<random.size();j++) {
+		int cont=0;
+		for (int j=0;j<r;j++) {
 			do {
 				flag=false;
 				//cerca il numero random all'interno del vettore
-				for (int h=0;h<random.size();h++){
+				for (int h=0;h<r;h++){
+					//se il valore casuale è = a 0
+					if (t==0) {
+						if (cont==0) {
+							flag=false;
+							cont++;
+							break;
+						}
+					}
 					//se c'è nel vettore oppure t è 0 dammi un'altro numero casuale e metti a true
-					if(t==0||k[h]==t) {//
+					if(k[h]==t) {//
 						flag=true;
-						t = casual.nextInt(random.size()+1);//incrementa di 1 il numero massimo di valore da cercare
+						t = casual.nextInt(r);//incrementa di 1 il numero massimo di valore da cercare
 						break;
 						}
+					
 					}
 				//finchè il flag è true
 				}while(flag);
 			if (!flag) {
 				k[j]=t;
-				t=casual.nextInt(random.size()+1);
+				t=casual.nextInt(r);
 				}
 			}
-		i = 0;
-		for (Alunno alunno : DisposizioneDAO.alunniClasse(id)) {
-			random.put(alunno.getId(),k[i++]);
-		}
-		
-		
-		
-		
-		
+		ArrayList<Alunno> lista = new ArrayList<>();
+		for (int i=0;i<r;i++)
+			lista.add(listaOrdinata.get(k[i]));
 		
 		return lista;
 		
