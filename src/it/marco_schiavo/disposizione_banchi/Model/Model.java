@@ -174,6 +174,7 @@ public class Model {
 	    	}while (serviceV.size()==0 || serviceT.size()==0 || serviceC.size()==0);
 	    }
 	    //TODO: implementare le condizioni delle liste
+	    //TODO: provare il calcolo combinatorio con la ricorsione
 	    if (serviceV.size()!=0 && serviceT.size()!=0 && serviceC.size()==0) {
 	    	boolean flag = false;
 	    	do {
@@ -237,8 +238,23 @@ public class Model {
 
 		    	}
 		    	}while (!flag);
-	    	
 	    }
+	    if (serviceV.size()==0 && serviceT.size()!=0 && serviceC.size()==0) {
+	    	boolean flag = false;
+	    	do {
+	    		flag = false;
+		    	for (int i=0; ;i++) {
+		    		try {
+		    			mappa.put(serviceT.get(i),serviceT.get(i++));
+		    		}catch (IndexOutOfBoundsException e) {
+		    			flag = true;
+		    			break;
+		    		}
+
+		    	}
+		    	}while (!flag);
+	    }
+	    
 	    }while (serviceV.size()==0 && serviceT.size()==0 && serviceC.size()==0);
 
 	
