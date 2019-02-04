@@ -1,6 +1,7 @@
 package it.marco_schiavo.disposizione_banchi.Model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -58,7 +59,10 @@ public class Model {
 		
 		//implementato l'algoritmo del casuale
 				boolean flag = false;
-				int[] k = new int[listaOrdinata.size()];	
+				int[] k;
+				if (listaOrdinata.size()!=0) {
+					k = new int[listaOrdinata.size()];}
+				else return k = new int[0];
 				Random casual = new Random();//mi restituisce un numero casuale da 0 a N compreso
 				int r = listaOrdinata.size();
 				int t = casual.nextInt(r);
@@ -129,7 +133,7 @@ public class Model {
 		
 	}
 	
-	public ArrayList<Alunno> vincoli(int id){
+	public HashMap<Alunno,Alunno> vincoli(int id){
 		
 		//implementare eventuali vincoli di ordinamento random
 		ArrayList<Alunno> lista = DisposizioneDAO.alunniClasse(id);
@@ -154,14 +158,93 @@ public class Model {
 			}
 		}
 		
+			ArrayList<Alunno> serviceV = serviceList(vivaci);
+			ArrayList<Alunno> serviceT = serviceList(tranquilli);
+			ArrayList<Alunno> serviceC = serviceList(criminali);
 		
-	    ArrayList<Alunno> service = serviceList(vivaci);
-		
+
+	    HashMap<Alunno,Alunno> mappa = new HashMap<>();
+	    
+	    do {
+	    if (serviceV.size()!=0 && serviceT.size()!=0 && serviceC.size()!=0) {
+	    	do {
+	    	for (int i=0; ;i++) {
+	    	mappa.put(serviceV.get(i),serviceT.get(i));
+	    	mappa.put(serviceC.get(i),serviceT.get(i));}
+	    	}while (serviceV.size()==0 || serviceT.size()==0 || serviceC.size()==0);
+	    }
+	    //TODO: implementare le condizioni delle liste
+	    if (serviceV.size()!=0 && serviceT.size()!=0 && serviceC.size()==0) {
+	    	boolean flag = false;
+	    	do {
+	    		flag = false;
+		    	for (int i=0; ;i++) {
+		    		try {
+		    			mappa.put(serviceV.get(i),serviceT.get(i));
+		    			serviceV.remove(i);
+		    			serviceT.remove(i);
+		    			i--;
+		    		}catch (IndexOutOfBoundsException e) {
+		    			flag = true;
+		    			break;
+		    		}
+
+		    	}
+		    	}while (!flag);
+	    	
+	    }
+	    if (serviceV.size()!=0 && serviceT.size()==0 && serviceC.size()!=0) {
+	    	boolean flag = false;
+	    	do {
+	    		flag = false;
+		    	for (int i=0; ;i++) {
+		    		try {
+		    			mappa.put(serviceV.get(i),serviceC.get(i));
+		    		}catch (IndexOutOfBoundsException e) {
+		    			flag = true;
+		    			break;
+		    		}
+
+		    	}
+		    	}while (!flag);
+	    }
+	    if (serviceV.size()!=0 && serviceT.size()==0 && serviceC.size()==0) {
+	    	boolean flag = false;
+	    	do {
+	    		flag = false;
+		    	for (int i=0; ;i++) {
+		    		try {
+		    			mappa.put(serviceV.get(i),serviceV.get(i++));
+		    		}catch (IndexOutOfBoundsException e) {
+		    			flag = true;
+		    			break;
+		    		}
+
+		    	}
+		    	}while (!flag);
+	    }
+	    if (serviceV.size()==0 && serviceT.size()!=0 && serviceC.size()!=0) {
+	    	boolean flag = false;
+	    	do {
+	    		flag = false;
+		    	for (int i=0; ;i++) {
+		    		try {
+		    			mappa.put(serviceT.get(i),serviceC.get(i));
+		    		}catch (IndexOutOfBoundsException e) {
+		    			flag = true;
+		    			break;
+		    		}
+
+		    	}
+		    	}while (!flag);
+	    	
+	    }
+	    }while (serviceV.size()==0 && serviceT.size()==0 && serviceC.size()==0);
 
 	
 		
 		
-		return service;
+		return mappa;
 	}
 
 	

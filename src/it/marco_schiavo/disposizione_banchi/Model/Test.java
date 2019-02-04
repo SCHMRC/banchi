@@ -1,5 +1,8 @@
 package it.marco_schiavo.disposizione_banchi.Model;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 import it.marco_schiavo.disposizione_banchi.Model.Alunno;
 
 
@@ -23,20 +26,23 @@ public class Test {
 		
 //		System.out.println(model.updateAula(6, 3, "B"));
 		
-//		for (Alunno p : model.getAlunniClasse(2)) {
-//		System.out.println(p.toString());
-//		System.out.println("*****");
-//	}
+		for (Alunno p : model.getAlunniClasse(3)) {
+		System.out.println(p.toString());
+		System.out.println("*****");
+	}
 //		System.out.println("--------");
 //		for (Alunno p : model.random(2)) {
 //		System.out.println(p.toString());
 //		System.out.println("*****");
 //	}
 		
-		for (Alunno p : model.vincoli(2)) {
-		System.out.println(p.toString());
-		System.out.println("*****");
-	}
+		HashMap<Alunno,Alunno> mappa = model.vincoli(3);
+		
+		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) {
+		    // Stampo le coppie chiave-valore
+		    System.out.println("Key = " + entry.getKey());
+		    System.out.println("Value = " + entry.getValue());
+		  }
 
 
 		
