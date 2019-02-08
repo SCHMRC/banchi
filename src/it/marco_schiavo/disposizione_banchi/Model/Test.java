@@ -26,7 +26,7 @@ public class Test {
 		
 //		System.out.println(model.updateAula(6, 3, "B"));
 		
-		for (Alunno p : model.getAlunniClasse(3)) {
+		for (Alunno p : model.getAlunniClasse(2)) {
 		System.out.println(p.toString());
 		System.out.println("*****");
 	}
@@ -36,7 +36,7 @@ public class Test {
 //		System.out.println("*****");
 //	}
 		
-		HashMap<Alunno,Alunno> mappa = model.vincoli(3);
+		HashMap<Alunno,Alunno> mappa = model.vincoli(2);
 		
 		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) {
 		    // Stampo le coppie chiave-valore

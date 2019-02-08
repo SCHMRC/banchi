@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.Map.Entry;
 
 import it.marco_schiavo.disposizione_banchi.DAO.DisposizioneDAO;
 
 public class Model {
-	
-	
-	
+	private HashMap<Alunno,Alunno> mappa2;
+
 	public Model() {
 		super();
+		mappa2 = new HashMap<>();
 	}
 	
 	public boolean inserisciAlunno(Alunno p) {
@@ -164,7 +165,9 @@ public class Model {
 		
 
 	    HashMap<Alunno,Alunno> mappa = new HashMap<>();
-	    
+	    /*
+	    //TODO: implementare le condizioni delle liste
+	    //TODO: provare il calcolo combinatorio con la ricorsione
 	    do {
 	    if (serviceV.size()!=0 && serviceT.size()!=0 && serviceC.size()!=0) {
 	    	do {
@@ -173,8 +176,7 @@ public class Model {
 	    	mappa.put(serviceC.get(i),serviceT.get(i));}
 	    	}while (serviceV.size()==0 || serviceT.size()==0 || serviceC.size()==0);
 	    }
-	    //TODO: implementare le condizioni delle liste
-	    //TODO: provare il calcolo combinatorio con la ricorsione
+
 	    if (serviceV.size()!=0 && serviceT.size()!=0 && serviceC.size()==0) {
 	    	boolean flag = false;
 	    	do {
@@ -256,11 +258,94 @@ public class Model {
 	    }
 	    
 	    }while (serviceV.size()==0 && serviceT.size()==0 && serviceC.size()==0);
-
-	
+*/
+	    mappa = ricorsione(serviceV,serviceT,serviceC);
 		
 		
 		return mappa;
+	}
+	
+	
+	public HashMap<Alunno,Alunno> ricorsione(ArrayList<Alunno> serviceV,ArrayList<Alunno> serviceT,ArrayList<Alunno> serviceC){
+		//implementare le eccezioni
+		HashMap<Alunno,Alunno> mappa = new HashMap<>();
+		int i = 0;
+	
+		
+		if (serviceV.size()==0 && serviceT.size()==0 && serviceC.size()==0) {
+			return mappa2;		
+		}
+		
+		if (serviceV.size()==0)
+			try {
+				if (serviceC.size()==0) {
+					mappa.put(serviceT.get(i),serviceT.get(i+1));
+					serviceT.remove(i);
+					serviceT.remove(i);
+				}
+				else if (serviceT.size()==0) {
+					mappa.put(serviceC.get(i),serviceC.get(i+1));
+					serviceC.remove(i);
+					serviceC.remove(i);
+				}else {mappa.put(serviceT.get(i),serviceC.get(i));
+				serviceT.remove(i);
+    			serviceC.remove(i);}
+    		}catch (IndexOutOfBoundsException e) {
+    			return mappa;
+    		}
+		else if (serviceT.size()==0) {
+			try {
+				if (serviceC.size()==0) {
+					mappa.put(serviceV.get(i),serviceV.get(i+1));
+					serviceV.remove(i);
+					serviceV.remove(i);
+				}
+				else if (serviceV.size()==0) {
+					mappa.put(serviceC.get(i),serviceC.get(i+1));
+					serviceC.remove(i);
+					serviceC.remove(i);
+				}else 	{mappa.put(serviceC.get(i),serviceV.get(i));
+    			serviceC.remove(i);
+    			serviceV.remove(i);}
+    		}catch (IndexOutOfBoundsException e) {
+    			return mappa;
+    			}
+			}
+		else if (serviceC.size()==0) {
+			try {
+				if (serviceT.size()==0) {
+					mappa.put(serviceV.get(i),serviceV.get(i+1));
+					serviceV.remove(i);
+					serviceV.remove(i);
+				}
+				else if (serviceV.size()==0) {
+					mappa.put(serviceT.get(i),serviceT.get(i+1));
+					serviceT.remove(i);
+					serviceT.remove(i);
+				}	
+				else {mappa.put(serviceT.get(i),serviceV.get(i));
+    			serviceT.remove(i);
+    			serviceV.remove(i);}
+    		}catch (IndexOutOfBoundsException e) {
+    			return mappa;
+    			}
+			}
+		
+		else {mappa.put(serviceV.get(i),serviceT.get(i));
+		      mappa.put(serviceC.get(i),serviceT.get(i+1));
+		      serviceV.remove(i);
+		      serviceC.remove(i);
+		      serviceT.remove(i);
+		      serviceT.remove(i);
+		}
+		
+		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) {
+		    mappa2.put(entry.getKey(), entry.getValue());
+		  }
+		
+		
+		
+		return ricorsione(serviceV,serviceT,serviceC);
 	}
 
 	
