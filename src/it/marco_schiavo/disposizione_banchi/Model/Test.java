@@ -14,7 +14,7 @@ public class Test {
 //		Alunno j = new Alunno("Cocco","Pero","M","vivace",2);
 //		System.out.println(model.aggiornaAlunno(5, j));
 //		System.out.println(model.inserisciAlunno(j));
-//		System.out.println(model.rimuoviAlunno(7));
+//		System.out.println(model.rimuoviAlunno(27));
 //		System.out.println(model.riassegnaId());
 		
 //		for (Alunno p : model.getAll()) {
@@ -26,23 +26,27 @@ public class Test {
 		
 //		System.out.println(model.updateAula(6, 3, "B"));
 		
-		for (Alunno p : model.getAlunniClasse(2)) {
-		System.out.println(p.toString());
-		System.out.println("*****");
-	}
+//		for (Alunno p : model.getAlunniClasse(3)) {
+//		System.out.println(p.toString());
+//		System.out.println("*****");
+//	}
 //		System.out.println("--------");
 //		for (Alunno p : model.random(2)) {
 //		System.out.println(p.toString());
 //		System.out.println("*****");
 //	}
 		
-		HashMap<Alunno,Alunno> mappa = model.vincoli(2);
+		HashMap<Alunno,Alunno> mappa = model.vincoli(3);
 		
-		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) {
+		model.salva(mappa,"5A");
+		
+		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) { 
 		    // Stampo le coppie chiave-valore
-		    System.out.println("Key = " + entry.getKey());
-		    System.out.println("Value = " + entry.getValue());
+		    System.out.println(entry.getKey());
+		    System.out.println(entry.getValue());
 		  }
+		
+		
 
 
 		
