@@ -38,7 +38,9 @@ public class Test {
 		
 		HashMap<Alunno,Alunno> mappa = model.vincoli(3);
 		
-		model.salva(mappa,"5A");
+		model.salva(mappa, 3);
+		
+		
 		
 		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) { 
 		    // Stampo le coppie chiave-valore

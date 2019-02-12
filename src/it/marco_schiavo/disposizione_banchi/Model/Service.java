@@ -3,7 +3,6 @@ package it.marco_schiavo.disposizione_banchi.Model;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,9 +19,14 @@ public class Service {
 	private String nomefile;
 	private File file;
 
+
 	
 	public Service() {
 		this.mappa2 = new HashMap<>();
+	}
+	
+	public String getNomefile(int id) {
+		return DisposizioneDAO.classe_sezione(id);
 	}
 	
 	
@@ -158,7 +162,7 @@ public class Service {
 	    	controllo.add(entry.getValue().getId());
 	    }
 	    //risolvere il problema sulla verifa dell'eistenza del file
-	    file = new File(getNomeFile()+".txt");
+	    file = new File(getNomefile(id)+".txt");
 	    if (file.exists()) {
 	    	try {
 	    		ArrayList<Integer> listafile = new ArrayList<>();
@@ -166,22 +170,25 @@ public class Service {
 				BufferedReader filebr = new BufferedReader(filer);
 				String riga;
 				String divisione = "************";
+				riga = filebr.readLine();
 				do {
-				while ((riga = filebr.readLine()) != divisione) {
-					listafile.add(Integer.parseInt(riga));
-				}
+				while (!riga.equalsIgnoreCase(divisione)) {
+					String[] numerostr = riga.split(" ");
+					int x = Integer.parseInt(numerostr[0]);
+					listafile.add(x);
+					riga = filebr.readLine();
+				};
+				
 				if (controllo.equals(listafile)) {
 					vincoli(id);
 				}
-					
+				listafile.clear();
 				}while ((riga = filebr.readLine()) != null);
-				
 				filebr.close();
 				filer.close();
 				
 				
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	    	
@@ -314,9 +321,9 @@ public class Service {
 		return ricorsione(serviceV,serviceT,serviceC);
 	}
 
-	public boolean salva(HashMap<Alunno,Alunno> mappa,String nomefile) {
+	public boolean salva(HashMap<Alunno,Alunno> mappa,int id) {
 		
-		this.nomefile=nomefile;
+
 		ArrayList<String> lista = new ArrayList<>();
 		boolean ok=true;
 		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) {
@@ -328,7 +335,7 @@ public class Service {
 		String divisione = "************";
 		lista.add(divisione);
 		try {
-			File file = new File(nomefile+".txt");
+			File file = new File(getNomefile(id)+".txt");
 			if (!file.exists())
 				file.createNewFile();
 			FileReader filer = new FileReader(file);

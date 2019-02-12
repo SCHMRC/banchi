@@ -4,7 +4,7 @@ import java.util.List;
 import it.marco_schiavo.disposizione_banchi.DAO.DisposizioneDAO;
 
 public class Model {
-	public Service service;
+	private Service service;
 
 	public Model() {
 		service = new Service();
@@ -55,8 +55,10 @@ public class Model {
 		return mappa;
 	}
 	
-	public boolean salva(HashMap<Alunno,Alunno> mappa,String nomefile) {
-		return service.salva(mappa,nomefile);
+	public boolean salva(HashMap<Alunno,Alunno> mappa,int id) {
+		return service.salva(mappa,id);
 	}
+	
+
 
 }

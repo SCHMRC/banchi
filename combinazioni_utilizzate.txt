@@ -1,0 +1,207 @@
+ 2 Schiavo Leonardo, sesso=M, comportamento=tranquillo, codice aula=2
+28 Pero Cocco, sesso=M, comportamento=vivace, codice aula=2
+3 Barbiero Giulia, sesso=F, comportamento=tranquillo, codice aula=2
+6 Schiavo Fabio, sesso=M, comportamento=vivace, codice aula=2
+7 Pero Cocco, sesso=M, comportamento=vivace, codice aula=2
+0 vuoto banco, sesso=null, comportamento=tranquillo, codice aula=0
+5 Sannino Rambo, sesso=M, comportamento=vivace, codice aula=2
+4 Pero Cocco, sesso=M, comportamento=vivace, codice aula=2
+************
+3 Barbiero Giulia, sesso=F, comportamento=tranquillo, codice aula=2
+4 Pero Cocco, sesso=M, comportamento=vivace, codice aula=2
+2 Schiavo Leonardo, sesso=M, comportamento=tranquillo, codice aula=2
+5 Sannino Rambo, sesso=M, comportamento=vivace, codice aula=2
+6 Schiavo Fabio, sesso=M, comportamento=vivace, codice aula=2
+0 vuoto banco, sesso=null, comportamento=tranquillo, codice aula=0
+7 Pero Cocco, sesso=M, comportamento=vivace, codice aula=2
+28 Pero Cocco, sesso=M, comportamento=vivace, codice aula=2
+************
+12 Catapano Martina, sesso=F, comportamento=vivace, codice aula=3
+14 Danise Antonio, sesso=M, comportamento=tranquillo, codice aula=3
+23 Orazio Luca, sesso=M, comportamento=criminale, codice aula=3
+8 Mariarosaria Alfano, sesso=F, comportamento=tranquillo, codice aula=3
+25 Schiavone Luca, sesso=M, comportamento=vivace, codice aula=3
+13 Colasanto Gianpaolo, sesso=M, comportamento=tranquillo, codice aula=3
+18 Longobardi Marco, sesso=M, comportamento=criminale, codice aula=3
+26 Zingone Mena, sesso=F, comportamento=tranquillo, codice aula=3
+10 Battimelli Sara, sesso=F, comportamento=tranquillo, codice aula=3
+20 Musella Cristian, sesso=M, comportamento=vivace, codice aula=3
+24 Ruocco Aniello, sesso=M, comportamento=criminale, codice aula=3
+15 Fattoruso Martina, sesso=F, comportamento=tranquillo, codice aula=3
+17 Lombardo Carlo, sesso=M, comportamento=criminale, codice aula=3
+21 Musella Martina, sesso=F, comportamento=tranquillo, codice aula=3
+11 Calabrese Emanuele, sesso=M, comportamento=vivace, codice aula=3
+16 Giordano Pantaleone, sesso=M, comportamento=tranquillo, codice aula=3
+19 Maiorino Chiara, sesso=F, comportamento=tranquillo, codice aula=3
+0 vuoto banco, sesso=null, comportamento=tranquillo, codice aula=0
+9 Chiara Aprea, sesso=F, comportamento=vivace, codice aula=3
+22 Novi Alessia, sesso=F, comportamento=tranquillo, codice aula=3
+************
+9 Chiara Aprea, sesso=F, comportamento=vivace, codice aula=3
+22 Novi Alessia, sesso=F, comportamento=tranquillo, codice aula=3
+23 Orazio Luca, sesso=M, comportamento=criminale, codice aula=3
+14 Danise Antonio, sesso=M, comportamento=tranquillo, codice aula=3
+11 Calabrese Emanuele, sesso=M, comportamento=vivace, codice aula=3
+13 Colasanto Gianpaolo, sesso=M, comportamento=tranquillo, codice aula=3
+17 Lombardo Carlo, sesso=M, comportamento=criminale, codice aula=3
+26 Zingone Mena, sesso=F, comportamento=tranquillo, codice aula=3
+8 Mariarosaria Alfano, sesso=F, comportamento=tranquillo, codice aula=3
+25 Schiavone Luca, sesso=M, comportamento=vivace, codice aula=3
+24 Ruocco Aniello, sesso=M, comportamento=criminale, codice aula=3
+10 Battimelli Sara, sesso=F, comportamento=tranquillo, codice aula=3
+18 Longobardi Marco, sesso=M, comportamento=criminale, codice aula=3
+16 Giordano Pantaleone, sesso=M, comportamento=tranquillo, codice aula=3
+12 Catapano Martina, sesso=F, comportamento=vivace, codice aula=3
+21 Musella Martina, sesso=F, comportamento=tranquillo, codice aula=3
+15 Fattoruso Martina, sesso=F, comportamento=tranquillo, codice aula=3
+0 vuoto banco, sesso=null, comportamento=tranquillo, codice aula=0
+20 Musella Cristian, sesso=M, comportamento=vivace, codice aula=3
+19 Maiorino Chiara, sesso=F, comportamento=tranquillo, codice aula=3
+************
+20 Musella Cristian, sesso=M, comportamento=vivace, codice aula=3
+21 Musella Martina, sesso=F, comportamento=tranquillo, codice aula=3
+23 Orazio Luca, sesso=M, comportamento=criminale, codice aula=3
+26 Zingone Mena, sesso=F, comportamento=tranquillo, codice aula=3
+12 Catapano Martina, sesso=F, comportamento=vivace, codice aula=3
+22 Novi Alessia, sesso=F, comportamento=tranquillo, codice aula=3
+17 Lombardo Carlo, sesso=M, comportamento=criminale, codice aula=3
+16 Giordano Pantaleone, sesso=M, comportamento=tranquillo, codice aula=3
+8 Mariarosaria Alfano, sesso=F, comportamento=tranquillo, codice aula=3
+11 Calabrese Emanuele, sesso=M, comportamento=vivace, codice aula=3
+24 Ruocco Aniello, sesso=M, comportamento=criminale, codice aula=3
+19 Maiorino Chiara, sesso=F, comportamento=tranquillo, codice aula=3
+18 Longobardi Marco, sesso=M, comportamento=criminale, codice aula=3
+10 Battimelli Sara, sesso=F, comportamento=tranquillo, codice aula=3
+9 Chiara Aprea, sesso=F, comportamento=vivace, codice aula=3
+14 Danise Antonio, sesso=M, comportamento=tranquillo, codice aula=3
+13 Colasanto Gianpaolo, sesso=M, comportamento=tranquillo, codice aula=3
+0 vuoto banco, sesso=null, comportamento=tranquillo, codice aula=0
+25 Schiavone Luca, sesso=M, comportamento=vivace, codice aula=3
+15 Fattoruso Martina, sesso=F, comportamento=tranquillo, codice aula=3
+************
+20, sesso=M, comportamento=vivace, codice aula=3
+14, sesso=M, comportamento=tranquillo, codice aula=3
+17, sesso=M, comportamento=criminale, codice aula=3
+19, sesso=F, comportamento=tranquillo, codice aula=3
+25, sesso=M, comportamento=vivace, codice aula=3
+21, sesso=F, comportamento=tranquillo, codice aula=3
+24, sesso=M, comportamento=criminale, codice aula=3
+15, sesso=F, comportamento=tranquillo, codice aula=3
+13, sesso=M, comportamento=tranquillo, codice aula=3
+9, sesso=F, comportamento=vivace, codice aula=3
+18, sesso=M, comportamento=criminale, codice aula=3
+22, sesso=F, comportamento=tranquillo, codice aula=3
+23, sesso=M, comportamento=criminale, codice aula=3
+16, sesso=M, comportamento=tranquillo, codice aula=3
+11, sesso=M, comportamento=vivace, codice aula=3
+10, sesso=F, comportamento=tranquillo, codice aula=3
+8, sesso=F, comportamento=tranquillo, codice aula=3
+0, sesso=null, comportamento=tranquillo, codice aula=0
+12, sesso=F, comportamento=vivace, codice aula=3
+26, sesso=F, comportamento=tranquillo, codice aula=3
+************
+9 Aprea Aprea, sesso=F, comportamento=vivace, codice aula=3
+10 Sara Sara, sesso=F, comportamento=tranquillo, codice aula=3
+18 Marco Marco, sesso=M, comportamento=criminale, codice aula=3
+15 Martina Martina, sesso=F, comportamento=tranquillo, codice aula=3
+20 Cristian Cristian, sesso=M, comportamento=vivace, codice aula=3
+19 Chiara Chiara, sesso=F, comportamento=tranquillo, codice aula=3
+24 Aniello Aniello, sesso=M, comportamento=criminale, codice aula=3
+26 Mena Mena, sesso=F, comportamento=tranquillo, codice aula=3
+21 Martina Martina, sesso=F, comportamento=tranquillo, codice aula=3
+11 Emanuele Emanuele, sesso=M, comportamento=vivace, codice aula=3
+23 Luca Luca, sesso=M, comportamento=criminale, codice aula=3
+13 Gianpaolo Gianpaolo, sesso=M, comportamento=tranquillo, codice aula=3
+17 Carlo Carlo, sesso=M, comportamento=criminale, codice aula=3
+16 Pantaleone Pantaleone, sesso=M, comportamento=tranquillo, codice aula=3
+25 Luca Luca, sesso=M, comportamento=vivace, codice aula=3
+8 Alfano Alfano, sesso=F, comportamento=tranquillo, codice aula=3
+14 Antonio Antonio, sesso=M, comportamento=tranquillo, codice aula=3
+0 banco banco, sesso=null, comportamento=tranquillo, codice aula=0
+12 Martina Martina, sesso=F, comportamento=vivace, codice aula=3
+22 Alessia Alessia, sesso=F, comportamento=tranquillo, codice aula=3
+************
+9 Aprea Aprea, sesso=F, comportamento=vivace, codice aula=3
+14 Antonio Antonio, sesso=M, comportamento=tranquillo, codice aula=3
+23 Luca Luca, sesso=M, comportamento=criminale, codice aula=3
+22 Alessia Alessia, sesso=F, comportamento=tranquillo, codice aula=3
+20 Cristian Cristian, sesso=M, comportamento=vivace, codice aula=3
+19 Chiara Chiara, sesso=F, comportamento=tranquillo, codice aula=3
+24 Aniello Aniello, sesso=M, comportamento=criminale, codice aula=3
+16 Pantaleone Pantaleone, sesso=M, comportamento=tranquillo, codice aula=3
+21 Martina Martina, sesso=F, comportamento=tranquillo, codice aula=3
+25 Luca Luca, sesso=M, comportamento=vivace, codice aula=3
+18 Marco Marco, sesso=M, comportamento=criminale, codice aula=3
+26 Mena Mena, sesso=F, comportamento=tranquillo, codice aula=3
+17 Carlo Carlo, sesso=M, comportamento=criminale, codice aula=3
+10 Sara Sara, sesso=F, comportamento=tranquillo, codice aula=3
+11 Emanuele Emanuele, sesso=M, comportamento=vivace, codice aula=3
+13 Gianpaolo Gianpaolo, sesso=M, comportamento=tranquillo, codice aula=3
+15 Martina Martina, sesso=F, comportamento=tranquillo, codice aula=3
+0 banco banco, sesso=null, comportamento=tranquillo, codice aula=0
+12 Martina Martina, sesso=F, comportamento=vivace, codice aula=3
+8 Alfano Alfano, sesso=F, comportamento=tranquillo, codice aula=3
+************
+9 Chiara Aprea, sesso=F, comportamento=vivace, codice aula=3
+26 Zingone Mena, sesso=F, comportamento=tranquillo, codice aula=3
+17 Lombardo Carlo, sesso=M, comportamento=criminale, codice aula=3
+8 Mariarosaria Alfano, sesso=F, comportamento=tranquillo, codice aula=3
+11 Calabrese Emanuele, sesso=M, comportamento=vivace, codice aula=3
+15 Fattoruso Martina, sesso=F, comportamento=tranquillo, codice aula=3
+18 Longobardi Marco, sesso=M, comportamento=criminale, codice aula=3
+21 Musella Martina, sesso=F, comportamento=tranquillo, codice aula=3
+10 Battimelli Sara, sesso=F, comportamento=tranquillo, codice aula=3
+25 Schiavone Luca, sesso=M, comportamento=vivace, codice aula=3
+23 Orazio Luca, sesso=M, comportamento=criminale, codice aula=3
+14 Danise Antonio, sesso=M, comportamento=tranquillo, codice aula=3
+24 Ruocco Aniello, sesso=M, comportamento=criminale, codice aula=3
+19 Maiorino Chiara, sesso=F, comportamento=tranquillo, codice aula=3
+20 Musella Cristian, sesso=M, comportamento=vivace, codice aula=3
+22 Novi Alessia, sesso=F, comportamento=tranquillo, codice aula=3
+16 Giordano Pantaleone, sesso=M, comportamento=tranquillo, codice aula=3
+0 vuoto banco, sesso=null, comportamento=tranquillo, codice aula=0
+12 Catapano Martina, sesso=F, comportamento=vivace, codice aula=3
+13 Colasanto Gianpaolo, sesso=M, comportamento=tranquillo, codice aula=3
+************
+9 Chiara Aprea, sesso=F, comportamento=vivace, codice aula=3
+8 Mariarosaria Alfano, sesso=F, comportamento=tranquillo, codice aula=3
+24 Ruocco Aniello, sesso=M, comportamento=criminale, codice aula=3
+19 Maiorino Chiara, sesso=F, comportamento=tranquillo, codice aula=3
+12 Catapano Martina, sesso=F, comportamento=vivace, codice aula=3
+15 Fattoruso Martina, sesso=F, comportamento=tranquillo, codice aula=3
+23 Orazio Luca, sesso=M, comportamento=criminale, codice aula=3
+21 Musella Martina, sesso=F, comportamento=tranquillo, codice aula=3
+14 Danise Antonio, sesso=M, comportamento=tranquillo, codice aula=3
+11 Calabrese Emanuele, sesso=M, comportamento=vivace, codice aula=3
+17 Lombardo Carlo, sesso=M, comportamento=criminale, codice aula=3
+13 Colasanto Gianpaolo, sesso=M, comportamento=tranquillo, codice aula=3
+18 Longobardi Marco, sesso=M, comportamento=criminale, codice aula=3
+26 Zingone Mena, sesso=F, comportamento=tranquillo, codice aula=3
+20 Musella Cristian, sesso=M, comportamento=vivace, codice aula=3
+16 Giordano Pantaleone, sesso=M, comportamento=tranquillo, codice aula=3
+10 Battimelli Sara, sesso=F, comportamento=tranquillo, codice aula=3
+0 vuoto banco, sesso=null, comportamento=tranquillo, codice aula=0
+25 Schiavone Luca, sesso=M, comportamento=vivace, codice aula=3
+22 Novi Alessia, sesso=F, comportamento=tranquillo, codice aula=3
+************
+12 Martina Catapano, sesso=F, comportamento=vivace, codice aula=3
+21 Martina Musella, sesso=F, comportamento=tranquillo, codice aula=3
+17 Carlo Lombardo, sesso=M, comportamento=criminale, codice aula=3
+8 Alfano Mariarosaria, sesso=F, comportamento=tranquillo, codice aula=3
+9 Aprea Chiara, sesso=F, comportamento=vivace, codice aula=3
+19 Chiara Maiorino, sesso=F, comportamento=tranquillo, codice aula=3
+24 Aniello Ruocco, sesso=M, comportamento=criminale, codice aula=3
+15 Martina Fattoruso, sesso=F, comportamento=tranquillo, codice aula=3
+16 Pantaleone Giordano, sesso=M, comportamento=tranquillo, codice aula=3
+20 Cristian Musella, sesso=M, comportamento=vivace, codice aula=3
+18 Marco Longobardi, sesso=M, comportamento=criminale, codice aula=3
+26 Mena Zingone, sesso=F, comportamento=tranquillo, codice aula=3
+23 Luca Orazio, sesso=M, comportamento=criminale, codice aula=3
+13 Gianpaolo Colasanto, sesso=M, comportamento=tranquillo, codice aula=3
+25 Luca Schiavone, sesso=M, comportamento=vivace, codice aula=3
+14 Antonio Danise, sesso=M, comportamento=tranquillo, codice aula=3
+22 Alessia Novi, sesso=F, comportamento=tranquillo, codice aula=3
+0 banco vuoto, sesso=null, comportamento=tranquillo, codice aula=0
+11 Emanuele Calabrese, sesso=M, comportamento=vivace, codice aula=3
+10 Sara Battimelli, sesso=F, comportamento=tranquillo, codice aula=3
+************

@@ -25,10 +25,32 @@ public class DisposizioneDAO {
 			"FROM Alunno.alunno, Alunno.aula " + 
 			"WHERE  alunno.id_aula_FK=aula.id " + 
 			"AND aula.id = ?";
+	private static final String classe_sezione="SELECT * from aula where id=?";
 	
 	public DisposizioneDAO() {
 		
 	}
+	
+	public static String classe_sezione(int id) {
+		String classezione=null;
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement std = conn.prepareStatement(classe_sezione);
+			std.setInt(1, id);
+			ResultSet res = std.executeQuery();
+			while (res.next()) {
+				Aula a = new Aula(res.getInt("id"),res.getInt("classe"),res.getString("sezione"));
+				classezione = a.getClasse()+a.getSezione();
+			}
+			
+			conn.close();
+			return classezione;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return classezione = "0";
+		}
+	}
+	
 	
 	/**
 	 * legge tutti gli alunni presenti nel DB
