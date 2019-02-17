@@ -201,13 +201,25 @@ public class Service {
 		return mappa;
 	}
 	
-	
+	/**
+	 * inserisce il valore che ho ottenuto come risultato dal metodo ricorsione() 
+	 * all'interno della variabile d'istanza mappa2
+	 * @param mappa risultato dell'elaborazione ottenuto da ricorsione()
+	 */
 	public void insertRisultMappa(HashMap<Alunno,Alunno> mappa){
 		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) {
 		    mappa2.put(entry.getKey(), entry.getValue());
 		  }
 	}
 	
+	/**
+	 * metodo ricorsivo che mi restituisce ogni singola combinazione del calcolo combinatorio
+	 * @param serviceV <- lista alunno vivace
+	 * @param serviceT <- lista alunno tranquillo
+	 * @param serviceC <- lista alunno criminale
+	 * @return mi restituisce un singolo elemento di una mappa che verrà inserito nella variabile d'istanza mappa2 con il metodo
+	 * insertRisultMappa()
+	 */
 	public HashMap<Alunno,Alunno> ricorsione(ArrayList<Alunno> serviceV,ArrayList<Alunno> serviceT,ArrayList<Alunno> serviceC){
 		
 		Alunno vuoto = new Alunno();
@@ -321,6 +333,12 @@ public class Service {
 		return ricorsione(serviceV,serviceT,serviceC);
 	}
 
+	/**
+	 * 
+	 * @param mappa
+	 * @param id
+	 * @return
+	 */
 	public boolean salva(HashMap<Alunno,Alunno> mappa,int id) {
 		
 

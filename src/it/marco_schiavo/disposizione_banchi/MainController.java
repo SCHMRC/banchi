@@ -1,3 +1,4 @@
+
 /**
  * Sample Skeleton for 'Disposizione.fxml' Controller Class
  */
@@ -9,7 +10,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-public class DisposizioneController {
+public class MainController {
 
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -18,8 +19,20 @@ public class DisposizioneController {
     private URL location;
 
     @FXML
-    void handelTest(ActionEvent event) {
-    	Main.setNumeroscena(0);
+
+    
+    void handleClasse(ActionEvent event) {
+    	Main.setNumeroscena(1);
+
+    }
+
+    @FXML
+    void handleRandom(ActionEvent event) {
+
+    }
+
+    @FXML
+    void handleStudente(ActionEvent event) {
 
     }
 
