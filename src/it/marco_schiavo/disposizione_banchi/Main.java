@@ -2,6 +2,7 @@ package it.marco_schiavo.disposizione_banchi;
 	
 import java.util.ArrayList;
 
+import it.marco_schiavo.disposizione_banchi.Model.Model;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -17,17 +18,22 @@ public class Main extends Application {
 	//Mi permette di tenere memoria della pagina inizialmente vale 0 che stò visualizzando in modo che,successivamente, io possa identificarla rimuoverla e sostituirla
 	private static int numeroscena;
 
-	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			Model model = new Model();
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("anchor.fxml"));
 			FXMLLoader loaderMain = new FXMLLoader(getClass().getResource("main.fxml"));
 			FXMLLoader loaderDisposizione = new FXMLLoader(getClass().getResource("Disposizione.fxml"));
+
+			
 			
 			anchor = (AnchorPane)loader.load();
 			BorderPane rootBorder = (BorderPane)loaderMain.load();
 			BorderPane rootDisposizione = (BorderPane)loaderDisposizione.load();
+	
+			DisposizioneController controller = loaderDisposizione.getController();
+			controller.setModel(model);
 
 			//inserisco le mie scene nella lista
 			listascene.add(rootBorder);
@@ -38,8 +44,10 @@ public class Main extends Application {
 			anchor.getChildren().add(listascene.get(0));
 
 			
-			Scene scene = new Scene(anchor,400,400);
+			Scene scene = new Scene(anchor,410,410);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setResizable(false);
+			primaryStage.setTitle("Disposizione Alunni");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
@@ -64,6 +72,7 @@ public class Main extends Application {
 	
 	
 	public static void main(String[] args) {
-		launch(args);
+		Application.launch(args);
+		
 	}
 }

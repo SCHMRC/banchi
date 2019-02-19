@@ -26,8 +26,31 @@ public class DisposizioneDAO {
 			"WHERE  alunno.id_aula_FK=aula.id " + 
 			"AND aula.id = ?";
 	private static final String classe_sezione="SELECT * from aula where id=?";
+	private static final String numero_alunni = "select count(id) as numero from alunno where id_aula_FK=?";
 	
 	public DisposizioneDAO() {
+		
+	}
+	
+	public static String getnumero_alunni(int id) {
+		Integer numero = 0;
+		String quantita = null;
+		try {
+		Connection conn = ConnectDB.getConnection();
+		PreparedStatement std = conn.prepareStatement(numero_alunni);
+		std.setInt(1, id);
+		ResultSet result = std.executeQuery();
+		while (result.next()) {
+			numero = result.getInt("numero");
+		}
+		quantita = String.format("numero= ", numero);
+		conn.close();
+		return quantita;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return quantita;
+		}
+		
 		
 	}
 	
