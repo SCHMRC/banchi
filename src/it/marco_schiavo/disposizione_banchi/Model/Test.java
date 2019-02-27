@@ -50,10 +50,10 @@ public class Test {
 //		    System.out.println(entry.getValue());
 //		  }
 		
-		ArrayList<Aula> aula = DisposizioneDAO.getnumero_alunni();
-		for (Aula x : aula) {
-			System.out.println(x);
-		}
+//		ArrayList<Aula> aula = DisposizioneDAO.getnumero_alunni();
+//		for (Aula x : aula) {
+//			System.out.println(x);
+//		}
 		
 
 

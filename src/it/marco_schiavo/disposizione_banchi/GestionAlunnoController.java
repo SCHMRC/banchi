@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 
 import it.marco_schiavo.disposizione_banchi.DAO.DisposizioneDAO;
 import it.marco_schiavo.disposizione_banchi.Model.Alunno;
-import it.marco_schiavo.disposizione_banchi.Model.Aula;
 import it.marco_schiavo.disposizione_banchi.Model.Classe;
 import it.marco_schiavo.disposizione_banchi.Model.ClasseStringConverter;
 import it.marco_schiavo.disposizione_banchi.Model.Model;
