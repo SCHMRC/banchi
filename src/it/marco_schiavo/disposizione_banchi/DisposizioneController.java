@@ -23,7 +23,6 @@ public class DisposizioneController {
 	
 	private Model model;
 	private ObservableList<Aula> collezione = FXCollections.observableArrayList();
-	private ObservableList<String> numeri_alunni = FXCollections.observableArrayList();
 
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -43,6 +42,9 @@ public class DisposizioneController {
 
     @FXML // fx:id="id"
     private TableColumn<Aula, Integer> id; // Value injected by FXMLLoader
+    
+    @FXML // fx:id="clumnNumeroAlunni"
+    private TableColumn<Aula, Integer> alunni; // Value injected by FXMLLoader
 
     @FXML // fx:id="txtidclasse"
     private TextField txtidclasse; // Value injected by FXMLLoader
@@ -55,12 +57,8 @@ public class DisposizioneController {
     
     @FXML
     private TextArea txtMessage;
-    
-    @FXML // fx:id="tablequantita"
-    private TableView<String> tablequantita; // Value injected by FXMLLoader
 
-    @FXML // fx:id="clumnNumeroAlunni"
-    private TableColumn<String, String> clumnNumeroAlunni; // Value injected by FXMLLoader
+
 
     @FXML
     void handelAggiungi(ActionEvent event) {
@@ -110,11 +108,10 @@ public class DisposizioneController {
     @FXML
     void handelTest(ActionEvent event) {
     	collezione.clear();
-    	numeri_alunni.clear();
+   
     	
-    	for (Aula aula : model.aule()) {
+    	for (Aula aula : model.getnumeroAlunni()) {
     		collezione.add(aula);
-    		numeri_alunni.add(model.getnumeroAlunni(aula.getAulaId()));
     	}
     	
     	txtDisplay.setItems(collezione);
@@ -122,15 +119,16 @@ public class DisposizioneController {
     			new PropertyValueFactory<Aula, Integer>("aulaId")//nome parametro della colonna
     			);
     	classe.setCellValueFactory(
-    			new PropertyValueFactory<Aula, Integer>("Classe")
+    			new PropertyValueFactory<Aula, Integer>("classe")
     			);
     	sezione.setCellValueFactory(
-    			new PropertyValueFactory<Aula, String>("Sezione")
+    			new PropertyValueFactory<Aula, String>("sezione")
+    			);
+    	alunni.setCellValueFactory(
+    			new PropertyValueFactory<Aula, Integer>("numero")
     			);
     	
-    	tablequantita.setItems(numeri_alunni);
-    	clumnNumeroAlunni.setCellValueFactory(
-    			new PropertyValueFactory<String,String>("numero"));
+    	
 
 
     
@@ -139,13 +137,7 @@ public class DisposizioneController {
     	
 
     }
-
-    @FXML
-    void handleMain(ActionEvent event) {
-    	Main.setNumeroscena(0);
-
-    }
-    
+ 
     @FXML
     void handleModifica(ActionEvent event) {
     	txtMessage.setDisable(false);
@@ -168,8 +160,8 @@ public class DisposizioneController {
         assert id != null : "fx:id=\"id\" was not injected: check your FXML file 'Disposizione.fxml'.";
         assert classe != null : "fx:id=\"classe\" was not injected: check your FXML file 'Disposizione.fxml'.";
         assert sezione != null : "fx:id=\"sezione\" was not injected: check your FXML file 'Disposizione.fxml'.";
-        assert tablequantita != null : "fx:id=\"tablequantita\" was not injected: check your FXML file 'Disposizione.fxml'.";
-        assert clumnNumeroAlunni != null : "fx:id=\"clumnNumeroAlunni\" was not injected: check your FXML file 'Disposizione.fxml'.";
+   
+        assert alunni != null : "fx:id=\"alunni\" was not injected: check your FXML file 'Disposizione.fxml'.";
         assert txtidclasse != null : "fx:id=\"txtidclasse\" was not injected: check your FXML file 'Disposizione.fxml'.";
         assert txtclasse != null : "fx:id=\"txtclasse\" was not injected: check your FXML file 'Disposizione.fxml'.";
         assert txtsezione != null : "fx:id=\"txtsezione\" was not injected: check your FXML file 'Disposizione.fxml'.";

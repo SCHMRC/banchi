@@ -13,6 +13,7 @@ import it.marco_schiavo.disposizione_banchi.Model.Aula;
 public class DisposizioneDAO {
 	
 	private static final String sqlQuery = "SELECT * FROM Alunno.alunno";
+	private static final String readAlunni = "select * FROM Alunno.alunno, Alunno.aula WHERE  alunno.id_aula_FK=aula.id ";
 	private static final String update = "UPDATE Alunno.alunno set nome=?, cognome=? , sesso=? , comportamento=?,id_aula_FK=? where id=?";
 	private static final String delete = "delete from Alunno.alunno where id=?";
 	private static final String insert = "INSERT INTO Alunno.alunno (nome,cognome,sesso,comportamento,id_aula_FK) value (?,?,?,?,?)";
@@ -26,29 +27,31 @@ public class DisposizioneDAO {
 			"WHERE  alunno.id_aula_FK=aula.id " + 
 			"AND aula.id = ?";
 	private static final String classe_sezione="SELECT * from aula where id=?";
-	private static final String numero_alunni = "select count(id) as numero from alunno where id_aula_FK=?";
+	private static final String numero_alunni = "select Alunno.aula.id, classe,sezione,count(Alunno.id)as alunni from Alunno.aula,Alunno.alunno where Alunno.alunno.id_aula_FK=Alunno.aula.id group by Alunno.aula.id";
+	private static final String classeid = "select id from Alunno.aula where classe=? and sezione=?";
+
 	
 	public DisposizioneDAO() {
 		
 	}
 	
-	public static String getnumero_alunni(int id) {
-		Integer numero = 0;
-		String quantita = null;
+	public static ArrayList<Aula> getnumero_alunni() {
+		ArrayList<Aula> aule = new ArrayList<>();
 		try {
 		Connection conn = ConnectDB.getConnection();
-		PreparedStatement std = conn.prepareStatement(numero_alunni);
-		std.setInt(1, id);
-		ResultSet result = std.executeQuery();
-		while (result.next()) {
-			numero = result.getInt("numero");
+		Statement std = conn.createStatement();
+		
+		ResultSet res = std.executeQuery(numero_alunni);
+		while (res.next()) {
+			Aula aula = new Aula(res.getInt("id"),res.getInt("classe"),res.getString("sezione"),
+					res.getInt("alunni"));
+			aule.add(aula);	
 		}
-		quantita = String.format("numero= ", numero);
 		conn.close();
-		return quantita;
+		return aule;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return quantita;
+			return null;
 		}
 		
 		
@@ -92,6 +95,32 @@ public class DisposizioneDAO {
 				Alunno p = new Alunno(result.getInt("id"),result.getString("nome"),
 						result.getString("cognome"),result.getString("sesso"),result.getString("comportamento")
 						,result.getInt("id_aula_FK"));
+				lista.add(p);
+			}
+			conn.close();
+			return lista;
+			
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+	}
+	
+	public static ArrayList<Alunno> readAll(){
+		lista = new ArrayList<Alunno>();
+		
+		
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement std = conn.prepareStatement(readAlunni);
+			ResultSet result = std.executeQuery();
+			while (result.next()) {
+				Alunno p = new Alunno(result.getInt("id"),result.getString("nome"),
+						result.getString("cognome"),result.getString("sesso"),result.getString("comportamento")
+						,result.getInt("classe"),result.getString("sezione"));
 				lista.add(p);
 			}
 			conn.close();
@@ -408,7 +437,7 @@ public class DisposizioneDAO {
 			while (result.next()) {
 				Alunno alunno = new Alunno(result.getInt("id"),result.getString("nome"),
 						result.getString("cognome"),result.getString("sesso"),result.getString("comportamento")
-						,result.getInt("id_aula_FK"));
+						,result.getInt("classe"),result.getString("sezione"));
 				lista.add(alunno);
 			}
 			conn.close();
@@ -421,6 +450,28 @@ public class DisposizioneDAO {
 
 		return lista;
 		
+	}
+	
+	public static int classeid(int classe,String sezione) {
+		int k=0;
+		
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement std = conn.prepareStatement(classeid);
+			std.setInt(1,classe);
+			std.setString(2, sezione);
+			ResultSet res = std.executeQuery();
+			while (res.next()) {
+				k = res.getInt("id");
+			}
+			conn.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return k;
 	}
 
 

@@ -2,77 +2,84 @@ package it.marco_schiavo.disposizione_banchi;
 	
 import java.util.ArrayList;
 
+
 import it.marco_schiavo.disposizione_banchi.Model.Model;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
-	//creo una variabile statica di tipo AnchorPane in modo da appenderci altri layout(è un layout che consente di posizionare il contenuto a una distanza specifica dai lati)
-	private static AnchorPane anchor;
-	// la lista statica contiene tutte le pagine fxml in questo caso di tipo BorderPane
-	private static ArrayList<BorderPane> listascene = new ArrayList<>();
-	//Mi permette di tenere memoria della pagina inizialmente vale 0 che stò visualizzando in modo che,successivamente, io possa identificarla rimuoverla e sostituirla
-	private static int numeroscena;
+	private static int indice;
+	private static ArrayList<Stage> listaFinestra = new ArrayList<>();
+	private static ArrayList<Scene> listaScene = new ArrayList<>();
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage finestra) {
+		
 		try {
 			Model model = new Model();
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("anchor.fxml"));
+
 			FXMLLoader loaderMain = new FXMLLoader(getClass().getResource("main.fxml"));
 			FXMLLoader loaderDisposizione = new FXMLLoader(getClass().getResource("Disposizione.fxml"));
+			FXMLLoader loaderAlunni = new FXMLLoader(getClass().getResource("GestioneAlunno.fxml"));
+			FXMLLoader loaderRandom = new FXMLLoader(getClass().getResource("Random.fxml"));
 
-			
-			
-			anchor = (AnchorPane)loader.load();
 			BorderPane rootBorder = (BorderPane)loaderMain.load();
 			BorderPane rootDisposizione = (BorderPane)loaderDisposizione.load();
-	
+			BorderPane rootAlunni = (BorderPane)loaderAlunni.load();
+			BorderPane rootRandom = (BorderPane)loaderRandom.load();
+
 			DisposizioneController controller = loaderDisposizione.getController();
 			controller.setModel(model);
+			GestionAlunnoController alunnoController = loaderAlunni.getController();
+			alunnoController.setModel(model);
+			
 
 			//inserisco le mie scene nella lista
-			listascene.add(rootBorder);
-			listascene.add(rootDisposizione);
-			
-			
-			//aggiungo al mio master layout la scena che voglio visualizzare la prima volta che eseguo il programma
-			anchor.getChildren().add(listascene.get(0));
+			listaScene.add(new Scene(rootBorder));
+			listaScene.add(new Scene(rootDisposizione));
+			listaScene.add(new Scene(rootAlunni));
+			listaScene.add(new Scene(rootRandom));
 
+			Stage mainStage = new Stage();
+			Stage firstStage = new Stage();
+			Stage secondStage = new Stage();
+			Stage thirdStage = new Stage();
 			
-			Scene scene = new Scene(anchor,410,410);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setResizable(false);
-			primaryStage.setTitle("Disposizione Alunni");
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			listaFinestra.add(mainStage);
+			listaFinestra.add(firstStage);
+			listaFinestra.add(secondStage);
+			listaFinestra.add(thirdStage);
+			
+			
+			
+			finestra.setResizable(false);
+			finestra = listaFinestra.get(indice);
+			finestra.setScene(listaScene.get(getIndice()));
+			finestra.setTitle("Disposizione Alunni");
+			finestra.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	/**
-	 * Questo metodo mi consente di settare la scena che voglio successivamente visualizzare
-	 * all'interno di ogni controller della scena inserirò il numero del file FXML che voglio visualizzare
-	 * 		1)Rimuove la scena corrente (con il numeroscena attuale)
-	 * 		2)La sostituisce con il numeroscena che passo nel controller specifico
-	 * 		3)Tiene memoria dell'indice della scena che sto visualizzando in modo che alla successiva chiamata io possa rimuoverlo
-	 * @param i <- indice del della lista che voglio visualizzare
-	 */
-	public static void setNumeroscena(int i) {
-		anchor.getChildren().remove(listascene.get(numeroscena));
-		anchor.getChildren().add(listascene.get(i));
-		numeroscena = i;
-		
+	public static void newStart() {
+		Main main = new Main();
+		main.start(listaFinestra.get(getIndice()));
 	}
 	
+	public static void setIndice(int index) {
+		indice = index;
+	}
+	
+	public static int getIndice() {
+		return indice;
+	}
 	
 	public static void main(String[] args) {
 		Application.launch(args);
-		
 	}
+	
 }

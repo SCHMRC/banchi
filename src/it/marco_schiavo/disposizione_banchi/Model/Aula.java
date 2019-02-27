@@ -5,6 +5,7 @@ public class Aula {
 	private int aulaId;
 	private int classe;
 	private String sezione;
+	private int numero;
 	private ArrayList<Alunno> alunni;
 	
 	public Aula (int aulaId,int classe,String sezione) {
@@ -12,6 +13,13 @@ public class Aula {
 		this.setClasse(classe);
 		this.sezione=sezione;
 		this.alunni=new ArrayList<>();
+	}
+	
+	public Aula (int aulaId,int classe,String sezione,int numero) {
+		this.aulaId = aulaId;
+		this.setClasse(classe);
+		this.sezione=sezione;
+		this.numero=numero;
 	}
 
 	public int getAulaId() {
@@ -39,6 +47,14 @@ public class Aula {
 		this.sezione = sezione;
 	}
 
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
 	public ArrayList<Alunno> getAlunni() {
 		return alunni;
 	}
@@ -49,7 +65,7 @@ public class Aula {
 
 	@Override
 	public String toString() {
-		return "Aula [aulaId=" + aulaId + ", classe=" + classe + ", sezione=" + sezione + "]";
+		return aulaId + " classe=" + classe + " sezione=" + sezione + ", alunni=" + numero;
 	}
 	
 	

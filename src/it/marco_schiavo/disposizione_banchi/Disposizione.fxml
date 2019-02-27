@@ -15,24 +15,19 @@
    <center>
       <HBox prefHeight="390.0" prefWidth="391.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="txtDisplay" prefHeight="390.0" prefWidth="164.0">
+            <TableView fx:id="txtDisplay" prefHeight="390.0" prefWidth="220.0">
               <columns>
-                <TableColumn fx:id="id" prefWidth="34.0" text="Id" />
-                  <TableColumn fx:id="classe" prefWidth="61.0" text="Classe" />
-                <TableColumn fx:id="sezione" prefWidth="68.0" text="Sezione" />
+                <TableColumn fx:id="id" prefWidth="34.0" text="id" />
+                  <TableColumn fx:id="classe" prefWidth="61.0" text="classe" />
+                <TableColumn fx:id="sezione" prefWidth="68.0" text="sezione" />
+                 <TableColumn fx:id="alunni" prefWidth="55.0" text="alunni" />
               </columns>
-            </TableView>
-            <TableView fx:id="tablequantita" layoutX="10.0" layoutY="10.0" prefHeight="390.0" prefWidth="57.0">
-               <columns>
-                  <TableColumn fx:id="clumnNumeroAlunni" prefWidth="55.0" text="alunni" />
-               </columns>
             </TableView>
             <VBox>
                <children>
                   <HBox spacing="5.0">
                      <children>
                         <Button mnemonicParsing="false" onAction="#handelTest" text="Elenco" />
-                        <Button mnemonicParsing="false" onAction="#handleMain" text="Main" />
                      </children>
                      <VBox.margin>
                         <Insets />

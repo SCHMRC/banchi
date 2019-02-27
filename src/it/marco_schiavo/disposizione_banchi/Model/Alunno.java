@@ -8,6 +8,8 @@ public class Alunno {
 	private String sesso;
 	private String comportamento;
 	private int idAulaFK;
+	private int classe;
+	private String sezione;
 
 		
 	
@@ -33,6 +35,31 @@ public class Alunno {
 		this.sesso=sesso;
 		this.comportamento=comportamento;
 		this.idAulaFK=idAulaFK;
+	}
+	
+	public Alunno(int id,String nome,String cognome,String sesso,String comportamento,int classe,String sezione) {
+		this.id=id;
+		this.nome=nome;
+		this.cognome=cognome;
+		this.sesso=sesso;
+		this.comportamento=comportamento;
+		this.classe=classe;
+		this.sezione=sezione;
+	}
+	
+	public int getClasse() {
+		return this.classe;
+	}
+	public String getSezione() {
+		return this.sezione;
+	}
+	
+	public void setClasse(int classe) {
+		this.classe=classe;
+	}
+	
+	public void setSezione(String sezione) {
+		this.sezione=sezione;
 	}
 	
 

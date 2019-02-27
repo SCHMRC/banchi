@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.marco_schiavo.disposizione_banchi.GestionAlunnoController">
+   <center>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="idtavola" prefHeight="424.0" prefWidth="494.0">
+              <columns>
+                  <TableColumn fx:id="idclm" prefWidth="29.0" text="id" />
+                <TableColumn fx:id="nomeclm" prefWidth="105.0" text="nome" />
+                <TableColumn fx:id="cognomeclm" prefWidth="97.0" text="cognome" />
+                  <TableColumn fx:id="sessoclm" prefWidth="48.0" text="sesso" />
+                  <TableColumn fx:id="comportamentoclm" prefWidth="116.0" text="comportamento" />
+                  <TableColumn fx:id="classeclm" prefWidth="56.0" text="classe" />
+                  <TableColumn fx:id="sezioneclm" prefWidth="36.0" text="sez" />
+              </columns>
+            </TableView>
+            <VBox>
+               <children>
+                  <Label text="Dati Alunno" />
+                  <TextField fx:id="nometxt" prefHeight="27.0" prefWidth="117.0" promptText="nome">
+                     <VBox.margin>
+                        <Insets left="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="cognometxt" layoutX="10.0" layoutY="27.0" promptText="cognome">
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <HBox layoutX="10.0" layoutY="313.0">
+                     <children>
+                        <TextField fx:id="idtxt" prefColumnCount="1" promptText="id">
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Label text="*attributo opzionale">
+                           <HBox.margin>
+                              <Insets left="5.0" top="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox />
+                  <Separator prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <Label text="sesso">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <RadioButton id="sesso" fx:id="m_sex" mnemonicParsing="false" selected="true" text="Maschio">
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="sesso" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton id="sesso" fx:id="f_sex" layoutX="10.0" layoutY="109.0" mnemonicParsing="false" text="Femmina" toggleGroup="$sesso">
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <Separator layoutX="10.0" layoutY="91.0" prefHeight="0.0" prefWidth="201.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Separator>
+                  <Label text="Comportamento">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <RadioButton fx:id="tranquillo" mnemonicParsing="false" selected="true" text="Tranquillo">
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="comportamento" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="vivace" layoutX="15.0" layoutY="193.0" mnemonicParsing="false" text="Vivace" toggleGroup="$comportamento">
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="criminale" layoutX="10.0" layoutY="211.0" mnemonicParsing="false" text="Molto Vivace" toggleGroup="$comportamento">
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </RadioButton>
+                  <Separator layoutX="10.0" layoutY="162.0" prefHeight="0.0" prefWidth="201.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </Separator>
+                  <Label text="Info sulla classe" />
+                  <HBox>
+                     <children>
+                        <Label text="Classe">
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ChoiceBox fx:id="choicebox" prefHeight="27.0" prefWidth="104.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </ChoiceBox>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="280.0">
+                     <children>
+                        <Label text="Sezione">
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="sezionetxt" prefColumnCount="1">
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Separator layoutX="10.0" layoutY="261.0" prefHeight="0.0" prefWidth="201.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <HBox>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#btnAggiungi" text="Aggiungi">
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnModifica" text="Modifica">
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="93.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnCerca" text="Cerca">
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Separator layoutX="10.0" layoutY="345.0" prefHeight="0.0" prefWidth="201.0">
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <HBox layoutX="10.0" layoutY="345.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#btnElimina" text="Elimina" textFill="#d71111">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#btnRiassegnaId" text="Riassegna ID" textFill="#e80909">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" top="5.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </BorderPane.margin>
+      </HBox>
+   </center>
+</BorderPane>

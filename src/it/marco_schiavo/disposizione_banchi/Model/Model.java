@@ -24,6 +24,10 @@ public class Model {
 	public List<Alunno> getAll(){
 		return DisposizioneDAO.getAll();
 	}
+	public List<Alunno> readAll(){
+		return DisposizioneDAO.readAll();
+	}
+	
 	/**
 	 * aggiorna alunno
 	 * @param k id della classe da inserire
@@ -110,8 +114,8 @@ public class Model {
 		return service.salva(mappa,id);
 	}
 	
-	public String getnumeroAlunni(int id) {
-		return DisposizioneDAO.getnumero_alunni(id);
+	public List<Aula> getnumeroAlunni() {
+		return DisposizioneDAO.getnumero_alunni();
 	}
 	
 

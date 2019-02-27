@@ -1,8 +1,10 @@
 package it.marco_schiavo.disposizione_banchi.Model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import it.marco_schiavo.disposizione_banchi.DAO.DisposizioneDAO;
 import it.marco_schiavo.disposizione_banchi.Model.Alunno;
 
 
@@ -36,18 +38,22 @@ public class Test {
 //		System.out.println("*****");
 //	}
 		
-		HashMap<Alunno,Alunno> mappa = model.vincoli(3);
+//		HashMap<Alunno,Alunno> mappa = model.vincoli(3);
+//		
+//		model.salva(mappa, 3);
+//		
+//		
+//		
+//		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) { 
+//		    // Stampo le coppie chiave-valore
+//		    System.out.println(entry.getKey());
+//		    System.out.println(entry.getValue());
+//		  }
 		
-		model.salva(mappa, 3);
-		
-		
-		
-		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) { 
-		    // Stampo le coppie chiave-valore
-		    System.out.println(entry.getKey());
-		    System.out.println(entry.getValue());
-		  }
-		
+		ArrayList<Aula> aula = DisposizioneDAO.getnumero_alunni();
+		for (Aula x : aula) {
+			System.out.println(x);
+		}
 		
 
 

@@ -25,7 +25,8 @@ public class MainController {
 
     
     void handleClasse(ActionEvent event) {
-    	Main.setNumeroscena(1);
+    	Main.setIndice(1);
+    	Main.newStart();
 
     }
 
@@ -36,6 +37,8 @@ public class MainController {
 
     @FXML
     void handleStudente(ActionEvent event) {
+    	Main.setIndice(2);
+    	Main.newStart();
 
     }
 
