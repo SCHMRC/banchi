@@ -29,9 +29,44 @@ public class DisposizioneDAO {
 	private static final String classe_sezione="SELECT * from aula where id=?";
 	private static final String numero_alunni = "select Alunno.aula.id, classe,sezione,count(Alunno.id)as alunni from Alunno.aula left join Alunno.alunno on Alunno.alunno.id_aula_FK=Alunno.aula.id group by Alunno.aula.id";
 	private static final String classeid = "select id from Alunno.aula where classe=? and sezione=?";
+	private static final String ricreaAlunno = "select Alunno.alunno.id,Alunno.alunno.nome,Alunno.alunno.cognome,Alunno.alunno.sesso,Alunno.alunno.comportamento ,Alunno.alunno.id_aula_FK,Alunno.aula.classe,Alunno.aula.sezione  from Alunno.alunno,Alunno.aula where Alunno.alunno.id_aula_FK = Alunno.aula.id and Alunno.aula.sezione = ? and Alunno.aula.classe = ? and Alunno.alunno.nome =?  and Alunno.alunno.cognome=?";
 
 	
 	public DisposizioneDAO() {
+		
+	}
+	
+	public static Alunno ricrea_alunno(int classe, String sezione,String nome,String cognome) {
+		Alunno alunno = new Alunno();
+		
+		try {
+			Connection conn = ConnectDB.getConnection();
+			PreparedStatement std = conn.prepareStatement(ricreaAlunno);
+			std.setInt(2, classe);
+			std.setString(1, sezione);
+			std.setString(3,nome);
+			std.setString(4, cognome);
+			
+			ResultSet res = std.executeQuery();
+			while (res.next()) {
+				alunno.setId(res.getInt("id"));
+				alunno.setNome(nome);
+				alunno.setCognome(cognome);
+				alunno.setClasse(classe);
+				alunno.setSezione(sezione);
+				alunno.setComportamento(res.getString("comportamento"));
+				alunno.setIdAulaFK(res.getInt("id_aula_FK"));
+				alunno.setSesso(res.getString("sesso"));
+			}
+			conn.close();
+			return alunno;
+		
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return alunno;
+		}
+		
+		
 		
 	}
 	

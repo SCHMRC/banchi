@@ -74,10 +74,6 @@ public class DisposizioneController {
     	}else {
     		txtMessage.setText("Aula non creata"); 
     	}
-    	
-    	
-
-
     }
 
     @FXML
@@ -99,9 +95,6 @@ public class DisposizioneController {
     		txtMessage.setText(String.format("La classe %d%s non esiste", classe,sezione));
     		
     	}
-    		
-    		
-
     }
 
 
@@ -127,14 +120,6 @@ public class DisposizioneController {
     	alunni.setCellValueFactory(
     			new PropertyValueFactory<Aula, Integer>("numero")
     			);
-    	
-    	
-
-
-    
-    	
-    
-    	
 
     }
  

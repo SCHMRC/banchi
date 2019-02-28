@@ -32,6 +32,8 @@ public class MainController {
 
     @FXML
     void handleRandom(ActionEvent event) {
+    	Main.setIndice(3);
+    	Main.newStart();
 
     }
 

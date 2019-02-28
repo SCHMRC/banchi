@@ -38,17 +38,17 @@ public class Test {
 //		System.out.println("*****");
 //	}
 		
-//		HashMap<Alunno,Alunno> mappa = model.vincoli(3);
-//		
+		HashMap<Alunno,Alunno> mappa = model.vincoli(2);
+		
 //		model.salva(mappa, 3);
 //		
 //		
 //		
-//		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) { 
-//		    // Stampo le coppie chiave-valore
-//		    System.out.println(entry.getKey());
-//		    System.out.println(entry.getValue());
-//		  }
+		for (Entry<Alunno, Alunno> entry : mappa.entrySet()) { 
+		    // Stampo le coppie chiave-valore
+		    System.out.println(entry.getKey());
+		    System.out.println(entry.getValue());
+		  }
 		
 //		ArrayList<Aula> aula = DisposizioneDAO.getnumero_alunni();
 //		for (Aula x : aula) {

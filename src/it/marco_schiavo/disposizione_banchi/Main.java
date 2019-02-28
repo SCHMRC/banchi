@@ -35,6 +35,8 @@ public class Main extends Application {
 			controller.setModel(model);
 			GestionAlunnoController alunnoController = loaderAlunni.getController();
 			alunnoController.setModel(model);
+			RandomController randomController = loaderRandom.getController();
+			randomController.setModel(model);
 			
 
 			//inserisco le mie scene nella lista

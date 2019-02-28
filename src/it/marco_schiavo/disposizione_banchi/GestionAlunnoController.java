@@ -97,9 +97,6 @@ public class GestionAlunnoController {
 
     @FXML
     void btnAggiungi(ActionEvent event) {
-
-
-
     	String sezione = sezionetxt.getText();
     	int classe = choicebox.getSelectionModel().getSelectedItem().getValore();
 
@@ -239,6 +236,7 @@ public class GestionAlunnoController {
 
     @FXML
     void btnRiassegnaId(ActionEvent event) {
+    	model.riassegnaId();
 
     }
 

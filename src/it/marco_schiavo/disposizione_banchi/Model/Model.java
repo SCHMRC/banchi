@@ -132,6 +132,14 @@ public class Model {
 		
 	}
 	
+	public List<Alunno> random_senza_vincoli(int id){
+		return service.random(id);
+	}
+	
+	public Alunno ricrea_alunno(int classe,String sezione,String nome,String cognome) {
+		return DisposizioneDAO.ricrea_alunno(classe, sezione, nome, cognome);
+	}
+	
 
 	
 
