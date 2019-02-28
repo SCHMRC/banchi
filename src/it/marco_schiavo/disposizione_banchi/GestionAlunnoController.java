@@ -27,6 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class GestionAlunnoController {
 	private Model model;
 	private ObservableList<Alunno> viewAlunno = FXCollections.observableArrayList();
+
 	
     @FXML // ResourceBundle that was given to the FXMLLoader
     private ResourceBundle resources;
@@ -96,6 +97,32 @@ public class GestionAlunnoController {
 
     @FXML
     void btnAggiungi(ActionEvent event) {
+
+
+
+    	String sezione = sezionetxt.getText();
+    	int classe = choicebox.getSelectionModel().getSelectedItem().getValore();
+
+
+    	RadioButton sex = (RadioButton)sesso.getSelectedToggle();
+    	String s = sex.getText();
+    	switch (s) {
+    	
+    	case "Maschio" : s="M";
+    			break;
+    	case "Femmina" : s="F";
+    			break;
+    	}
+    	
+    	RadioButton comp = (RadioButton)comportamento.getSelectedToggle();
+    	String c = comp.getText();
+    	
+    	if (c.equalsIgnoreCase("Molto Vivace"))
+    		c="criminale";
+    	
+    	int id_aula = model.getIdAula(classe, sezione);
+    	Alunno p = new Alunno (nometxt.getText(),cognometxt.getText(),s,c,id_aula);
+    	model.inserisciAlunno(p);
 
     }
 
@@ -171,11 +198,42 @@ public class GestionAlunnoController {
 
     @FXML
     void btnElimina(ActionEvent event) {
+    	
+    	int k = Integer.parseInt(idtxt.getText()) ;
+    	model.rimuoviAlunno(k);
+    	
 
     }
 
     @FXML
     void btnModifica(ActionEvent event) {
+    	int k = Integer.parseInt(idtxt.getText());
+
+
+    	String sezione = sezionetxt.getText();
+    	int classe = choicebox.getSelectionModel().getSelectedItem().getValore();
+
+
+    	RadioButton sex = (RadioButton)sesso.getSelectedToggle();
+    	String s = sex.getText();
+    	switch (s) {
+    	
+    	case "Maschio" : s="M";
+    			break;
+    	case "Femmina" : s="F";
+    			break;
+    	}
+    	
+    	RadioButton comp = (RadioButton)comportamento.getSelectedToggle();
+    	String c = comp.getText();
+    	
+    	if (c.equalsIgnoreCase("Molto Vivace"))
+    		c="criminale";
+    	
+    	int id_aula = model.getIdAula(classe, sezione);
+    	Alunno p = new Alunno (nometxt.getText(),cognometxt.getText(),s,c,id_aula);
+    	
+    	model.aggiornaAlunno(k, p);
 
     }
 

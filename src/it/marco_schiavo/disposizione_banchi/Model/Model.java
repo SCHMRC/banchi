@@ -1,4 +1,5 @@
 package it.marco_schiavo.disposizione_banchi.Model;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import it.marco_schiavo.disposizione_banchi.DAO.DisposizioneDAO;
@@ -117,6 +118,21 @@ public class Model {
 	public List<Aula> getnumeroAlunni() {
 		return DisposizioneDAO.getnumero_alunni();
 	}
+	
+	public int getIdAula(int classe,String sezione) {
+		int k=-1;
+		ArrayList<Aula> lista = (ArrayList<Aula>)aule();
+		for (Aula aula : lista) {
+			if (aula.getClasse()==classe && aula.getSezione().equalsIgnoreCase(sezione))
+				k=aula.getAulaId();
+		}
+		
+		return k;
+	
+		
+	}
+	
+
 	
 
 

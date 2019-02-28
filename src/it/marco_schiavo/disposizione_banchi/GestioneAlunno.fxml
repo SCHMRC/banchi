@@ -49,7 +49,7 @@
                               <Insets left="5.0" top="5.0" />
                            </HBox.margin>
                         </TextField>
-                        <Label text="*attributo opzionale">
+                        <Label text="*da utilizzare per eliminare">
                            <HBox.margin>
                               <Insets left="5.0" top="10.0" />
                            </HBox.margin>

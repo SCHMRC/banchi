@@ -27,7 +27,7 @@ public class DisposizioneDAO {
 			"WHERE  alunno.id_aula_FK=aula.id " + 
 			"AND aula.id = ?";
 	private static final String classe_sezione="SELECT * from aula where id=?";
-	private static final String numero_alunni = "select Alunno.aula.id, classe,sezione,count(Alunno.id)as alunni from Alunno.aula,Alunno.alunno where Alunno.alunno.id_aula_FK=Alunno.aula.id group by Alunno.aula.id";
+	private static final String numero_alunni = "select Alunno.aula.id, classe,sezione,count(Alunno.id)as alunni from Alunno.aula left join Alunno.alunno on Alunno.alunno.id_aula_FK=Alunno.aula.id group by Alunno.aula.id";
 	private static final String classeid = "select id from Alunno.aula where classe=? and sezione=?";
 
 	
