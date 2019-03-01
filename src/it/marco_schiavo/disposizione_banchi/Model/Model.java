@@ -2,6 +2,7 @@ package it.marco_schiavo.disposizione_banchi.Model;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import it.marco_schiavo.disposizione_banchi.DAO.DisposizioneDAO;
 
 public class Model {
@@ -136,8 +137,13 @@ public class Model {
 		return service.random(id);
 	}
 	
-	public Alunno ricrea_alunno(int classe,String sezione,String nome,String cognome) {
+	public Alunno ricrea_alunno(int classe,String sezione,String nome,String cognome)
+	{
 		return DisposizioneDAO.ricrea_alunno(classe, sezione, nome, cognome);
+	}
+	
+	public boolean salva_lista(ArrayList<Alunno> lista,int id) {
+		return service.salva_lista(lista, id);
 	}
 	
 

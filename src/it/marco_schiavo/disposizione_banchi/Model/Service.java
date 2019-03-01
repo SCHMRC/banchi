@@ -385,6 +385,50 @@ public class Service {
 		
 	}
 	
+	public boolean salva_lista(ArrayList<Alunno> lista_alunni,int id) {
+
+		boolean ok=true;
+		ArrayList<String> lista = new ArrayList<>();
+		for (Alunno alunno : lista_alunni) {
+			lista.add(alunno.toString());
+		}
+		String divisione = "************";
+		lista.add(divisione);
+		
+		try {
+			File file = new File(getNomefile(id)+".txt");
+			if (!file.exists())
+				file.createNewFile();
+			
+			FileReader filer = new FileReader(file);
+			BufferedReader filebr = new BufferedReader(filer);
+			String stringa;
+			while ((stringa= filebr.readLine()) != null)
+				lista.add(stringa);
+			
+			
+			
+			filebr.close();
+			filer.close();
+			
+			FileWriter filew = new FileWriter(file);
+			BufferedWriter filebw = new BufferedWriter(filew);
+			
+			for (String riga : lista) {
+				filebw.write(riga + "\n");
+			}
+			
+			filebw.close();
+			filew.close();
+		} catch (IOException e) {
+			return ok=false;
+		}
+		
+		return ok;
+		
+		
+	}
+	
 	public String getNomeFile() {
 		return nomefile;
 	}

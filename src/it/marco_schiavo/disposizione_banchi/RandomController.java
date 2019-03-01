@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
-import java.util.TreeMap;
 
 import it.marco_schiavo.disposizione_banchi.Model.Alunno;
 import it.marco_schiavo.disposizione_banchi.Model.Classe;
@@ -48,9 +47,11 @@ public class RandomController {
 
     @FXML // fx:id="txtsezione"
     private TextField txtsezione; // Value injected by FXMLLoader
+    
 
     @FXML
     void handlecrea(ActionEvent event) {
+    	txtdisplay.setEditable(false);
     	txtdisplay.clear();
     	
     	boolean check = checkvincoli.isSelected();
@@ -58,7 +59,6 @@ public class RandomController {
 		String sezione = txtsezione.getText();
 		int i = model.getIdAula(classe, sezione);
 		HashMap<Alunno,Alunno> mappa = new HashMap<>();
-		HashMap<Alunno,Alunno> mappa_copia = new HashMap<>();
 		ArrayList<Alunno> lista = new ArrayList<>();
 		
 		
@@ -66,11 +66,10 @@ public class RandomController {
     	if (check==true) {
     		model.vincoli(i).clear();
     		mappa = model.vincoli(i);
-    		mappa_copia = model.vincoli(i);
     		for (Entry<Alunno,Alunno> entry : mappa.entrySet()) {
     			txtdisplay.appendText(entry.getValue().getNome() + " " + entry.getValue().getCognome()+ "\n");
     			txtdisplay.appendText(entry.getKey().getNome() + " " + entry.getKey().getCognome()+ "\n");
-    			txtdisplay.appendText("\n");
+    			txtdisplay.appendText("**********************\n");
     		}
     	}else {
     		model.random_senza_vincoli(i).clear();
@@ -78,7 +77,7 @@ public class RandomController {
     		for (Alunno alunno : lista) {
     			txtdisplay.appendText(alunno.getNome() + " " + alunno.getCognome()+ "\n");
     			txtdisplay.appendText(alunno.getNome() + " " + alunno.getCognome()+ "\n");
-    			txtdisplay.appendText("\n");
+    			txtdisplay.appendText("**********************\n");
     		}
     		
     	}
@@ -86,35 +85,35 @@ public class RandomController {
     }
 
     @FXML
-    //TODO implementare il metodo salva
     void handlesalva(ActionEvent event) {
-    	HashMap<Alunno,Alunno> mappa_ordinata = new HashMap<>();
+    	ArrayList<Alunno> mappa_ordinata = new ArrayList<>();
     	int classe =  btncheck.getSelectionModel().getSelectedItem().getValore();
     	String sezione = txtsezione.getText();
-    	ArrayList<Alunno> alunno = new ArrayList<>(2);
-
     	
+    	String display = txtdisplay.getText();
     	
-    	while(txtdisplay.getText()!=null) {
-    		while (!txtdisplay.getText().contains("\n")) {
-	    		for (int count=0;count<2;count++)	{
-			    	String nome_cognome = txtdisplay.getText();
-			    	String[] nome_cognome_diviso = nome_cognome.split(" ");
-			    	Alunno key = model.ricrea_alunno(classe, sezione, nome_cognome_diviso[0], nome_cognome_diviso[1]);
-			    	alunno.add(key);
-		    		}
-	    		mappa_ordinata.put(alunno.get(0), alunno.get(1));
-	    		}
-    			
+    	String[] diviso = display.split("\n");
+    	
+    	for (int i=0;i<diviso.length;i++) {
+    		if (!diviso[i].equalsIgnoreCase("**********************")) {
+    			String[] nome_cognome_diviso = diviso[i].split(" ");
+    			for (int k=0;k<1;k++) {
+    				String nome = nome_cognome_diviso[k];
+    				String cognome = nome_cognome_diviso[k+1];
+    				Alunno key = model.ricrea_alunno(classe, sezione, nome, cognome);
+    				mappa_ordinata.add(key);
+    			}
     		}
-    	
+    	}
+
     	int id = model.getIdAula(classe, sezione);
-    	model.salva(mappa_ordinata, id);
+    	model.salva_lista(mappa_ordinata, id);
 
     }
 
     @FXML // This method is called by the FXMLLoader when initialization is complete
     void initialize() {
+    	txtdisplay.setEditable(false);
     	Classe prima = new Classe("prima",1);
     	btncheck.setValue(prima);
     	btncheck.getItems().addAll(
