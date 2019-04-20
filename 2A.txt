@@ -1,0 +1,25 @@
+0 vuoto banco, sesso=null, comportamento=tranquillo
+45 Longobardi Mariapia, sesso=F, comportamento=vivace
+32 Cetro Annapia, sesso=F, comportamento=vivace
+52 Susino Cristian, sesso=M, comportamento=tranquillo
+34 Cosentino Giovanna, sesso=F, comportamento=tranquillo
+42 Galasso Vincenzo, sesso=M, comportamento=vivace
+0 vuoto banco, sesso=null, comportamento=tranquillo
+43 Grimaldi Gianluca, sesso=M, comportamento=vivace
+41 Ferraioli Anna, sesso=F, comportamento=tranquillo
+44 Langellotti Daniele, sesso=M, comportamento=criminale
+0 vuoto banco, sesso=null, comportamento=tranquillo
+48 Orlando Emanuele, sesso=M, comportamento=tranquillo
+35 Dambrosio Ilaria, sesso=F, comportamento=vivace
+50 Scutiero Teresa, sesso=F, comportamento=tranquillo
+0 vuoto banco, sesso=null, comportamento=tranquillo
+0 vuoto banco, sesso=null, comportamento=tranquillo
+49 Russo Carmen, sesso=F, comportamento=tranquillo
+53 Vitale Antonio, sesso=M, comportamento=criminale
+46 Milo Angela, sesso=F, comportamento=tranquillo
+33 Coppola Salvatore, sesso=M, comportamento=criminale
+51 Stanzione Riccardo, sesso=M, comportamento=tranquillo
+31 Cesarano Domenico, sesso=M, comportamento=vivace
+36 D'Aniello Antonio, sesso=M, comportamento=vivace
+47 Novi Carlo, sesso=M, comportamento=vivace
+************

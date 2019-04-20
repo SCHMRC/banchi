@@ -436,4 +436,8 @@ public class Service {
 	public String getNomeFile() {
 		return nomefile;
 	}
+	
+	public static void main (String[] args) {
+		
+	}
 }
