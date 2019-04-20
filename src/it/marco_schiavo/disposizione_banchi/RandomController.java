@@ -4,7 +4,14 @@
 
 package it.marco_schiavo.disposizione_banchi;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
@@ -20,6 +27,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 public class RandomController {
 	private Model model;
@@ -85,8 +94,9 @@ public class RandomController {
     }
 
     @FXML
-    void handlesalva(ActionEvent event) {
+    void handlesalva(ActionEvent event) throws IOException {
     	ArrayList<Alunno> mappa_ordinata = new ArrayList<>();
+    	ArrayList<String> lista = new ArrayList<>();
     	int classe =  btncheck.getSelectionModel().getSelectedItem().getValore();
     	String sezione = txtsezione.getText();
     	
@@ -108,6 +118,39 @@ public class RandomController {
 
     	int id = model.getIdAula(classe, sezione);
     	model.salva_lista(mappa_ordinata, id);
+    	String classe2 = model.setNome_file(id);
+    	/*la classe FileChooser del package javaFX mi permette di gestire meglio il path 
+    	 * del salvataggio dei dati mediante unaa finestra di dialogo predefinita*/
+    	FileChooser fileChooser = new FileChooser();
+    	fileChooser.getExtensionFilters().addAll(
+    	         new ExtensionFilter("Text Files", "*.txt"));
+    	fileChooser.setInitialFileName(classe2);
+    	File selected = fileChooser.showSaveDialog(null);
+    	
+		if (selected!=null) {
+		    		
+		    		FileWriter filew = new FileWriter(selected);
+		    		BufferedWriter filewr = new BufferedWriter(filew);
+		    		
+		    		for (Alunno alunno : mappa_ordinata) {
+		    			lista.add(alunno.getId()+" "+alunno.getCognome()+" "+alunno.getNome()+" ,sesso="+
+		    			alunno.getSesso()+" ,comportamento="+alunno.getComportamento());
+		    		}
+		    		String divisione = "************";
+		    		lista.add(divisione);
+		    		/* la classe LocalDate così come Local Time mi permette di stampare la data e/o ora
+		    		 * corrente mentre la classe DateTimeFormatter ha il metodo statico ofPattern che mi 
+		    		 * consente di formattare la data e/o l'ora*/
+		    		LocalDate date = LocalDate.now();
+		    		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/LL/yyyy");
+		    		String text = date.format(formatter);
+		    		
+		    		filewr.write(text+"\n");
+		    		for (String alunno : lista) {
+		    		filewr.write(alunno.toString() + "\n");
+		    		}
+		    		filewr.close();
+		    	}
 
     }
 

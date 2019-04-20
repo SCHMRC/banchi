@@ -429,6 +429,10 @@ public class Service {
 		
 	}
 	
+	public String setNome_file(int id) {
+		return getNomefile(id);
+	}
+	
 	public String getNomeFile() {
 		return nomefile;
 	}

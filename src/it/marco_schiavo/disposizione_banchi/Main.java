@@ -57,10 +57,11 @@ public class Main extends Application {
 			
 			
 			
-			finestra.setResizable(false);
+			
 			finestra = listaFinestra.get(indice);
 			finestra.setScene(listaScene.get(getIndice()));
 			finestra.setTitle("Disposizione Alunni");
+			finestra.setResizable(false);
 			finestra.show();
 		} catch(Exception e) {
 			e.printStackTrace();

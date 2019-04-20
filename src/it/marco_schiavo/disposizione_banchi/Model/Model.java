@@ -146,6 +146,10 @@ public class Model {
 		return service.salva_lista(lista, id);
 	}
 	
+	public String setNome_file(int id) {
+		return service.setNome_file(id);
+	}
+	
 
 	
 
